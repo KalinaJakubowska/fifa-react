@@ -69,7 +69,6 @@ function App() {
         });
       }
     }
-console.log("x")
     setMatches(matchesTemplate);
   };
 
@@ -83,7 +82,6 @@ console.log("x")
         setIsGameStarted={setIsGameStarted}
         generateMatches={generateMatches}
       />
-
       <Matches matches={matches} players={players} />
     </div>
   )
