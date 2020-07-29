@@ -3,9 +3,9 @@ import Settings from "./Settings";
 
 function App() {
   const [players, setPlayers] = useState(
-    localStorage.getItem("players") === null ? "" : JSON.parse(localStorage.getItem("players"))
+    localStorage.getItem("players") === null ? "" : JSON.parse(localStorage.getItem("players")));
   const [matches, setMatches] = useState('');
-  
+
   const removePlayer = (id) => {
     setPlayers(players => players.filter(task => task.id !== id));
   };
@@ -53,7 +53,7 @@ function App() {
     generateMatches();
   }, [players]);
 
- return (
+  return (
     <Settings
       players={players}
       addNewPlayer={addNewPlayer}
