@@ -1,0 +1,38 @@
+.settingsForm {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 20px;
+    grid-gap: 20px;
+    align-items: center;
+}
+
+@media (max-width: 767px) {
+    .settingsForm {
+        grid-template-columns: 1fr;
+    }
+}
+
+.settingsForm__input {
+    padding: 10px;
+    height: 45px;
+}
+
+.settingsForm__button {
+    color: #fff;
+    background-color: teal;
+    padding: 10px;
+    border: none;
+    transition: 0.5s;
+    height: 45px;
+}
+
+.settingsForm__button:hover {
+    background-color: hsl(180, 100%, 35%);
+    transform: scale(1.1);
+}
+
+@media (max-width: 767px) {
+    .settingsForm__button:hover {
+        transform: scale(1.02);
+    }
+}
