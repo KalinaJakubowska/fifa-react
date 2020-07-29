@@ -22,7 +22,7 @@ const SettingsForm = ({ addNewPlayer }) => {
                 placeholder="Co jest do zrobienia?"
                 onChange={({ target }) => setNewTaskContent(target.value)}
             />
-            <button className="settingsForm__button">Dodaj zadanie</button>
+            <button className="settingsForm__button">Dodaj nowego gracza</button>
         </form>
     );
 };
