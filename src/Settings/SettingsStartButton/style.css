@@ -1,0 +1,17 @@
+.buttons__button {
+    display: block;
+    margin: 0 auto;
+    color: teal;
+    border: none;
+    background-color: #fff;
+    padding: 10px;
+    transition: 0.25s;
+}
+
+.buttons__button:hover {
+    color: hsl(180, 100%, 35%);
+}
+
+.buttons__button:disabled {
+    color: #ccc;
+}
