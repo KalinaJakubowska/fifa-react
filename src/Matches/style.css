@@ -1,0 +1,32 @@
+.matches {
+    max-width: 1000px;
+    background-color: #fff;
+    margin: auto;
+    box-shadow: 0 0 5px 2px #ddd;
+}
+
+.match {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    border-bottom: 2px solid #eee;
+    margin: 0;
+}
+
+.match__item {
+    padding: 20px;
+    
+    text-align: center;
+}
+
+.match__item--player {
+    flex-basis: 50%;
+}
+
+.match__item--vs {
+    flex-grow: 0;
+}
+
+.match__item--goal {
+    flex-grow: 0;
+}
