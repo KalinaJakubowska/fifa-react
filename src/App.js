@@ -26,26 +26,21 @@ function App() {
   const generateMatches = () => {
     let matchesTemplate = [];
     const gameSize = players.length;
-    for (let a = 0; a < gameSize; a = a + 2) {
-      matchesTemplate.push({
-        id: matchesTemplate.length,
-        player1: players[a].name,
-        player2: players[(a + 1) % gameSize].name,
-        goal1: "-",
-        goal2: "-",
-      });
+    //first double queue, in two loops because of sorting (we don't want [ab, bc, cd] etc.)
+
+    for (let i = 0; i < 2; i++) {
+      for (let a = i; a < gameSize; a = a + 2) {
+        matchesTemplate.push({
+          id: matchesTemplate.length,
+          player1: players[a].name,
+          player2: players[(a + 1) % gameSize].name,
+          goal1: "-",
+          goal2: "-",
+        });
+      }
     }
 
-    for (let b = 1; b < gameSize; b = b + 2) {
-      matchesTemplate.push({
-        id: matchesTemplate.length,
-        player1: players[b].name,
-        player2: players[(b + 1) % gameSize].name,
-        goal1: "-",
-        goal2: "-",
-      });
-    }
-
+    //all double middle queues
     for (let i = 1; i < Math.floor((gameSize - 1) / 2); i++) {
       for (let y = 0; y < gameSize; y++) {
         matchesTemplate.push({
@@ -58,6 +53,7 @@ function App() {
       }
     }
 
+    //last single or double queue, depends on even or odd players number
     if ((gameSize % 2) === 0) {
       for (let c = 0; c < gameSize / 2; c++) {
         matchesTemplate.push({
