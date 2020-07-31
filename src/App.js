@@ -67,15 +67,18 @@ function App() {
       }
     }
     if (isEditEnabled) {
-      // for (let matchT of matchesTemplate) {
-      //   for (let match of matches) {
-      //     if ((matchT.player1 === match.player1 && matchT.player2 === match.player2) ||
-      //       (matchT.player1 === match.player2 && matchT.player2 === match.player1)) {
-      //       matchT.goal1 = match.goal1;
-      //       matchT.goal2 = match.goal2;
-      //     }
-      //   }
-      // };
+      for (let matchT of matchesTemplate) {
+        for (let match of matches) {
+          if ((matchT.player1 === match.player1 && matchT.player2 === match.player2) ||
+            (matchT.player1 === match.player2 && matchT.player2 === match.player1)) {
+            matchT.goal1 = match.goal1;
+            console.log(matchT.goal1, match.goal1)
+            matchT.goal2 = match.goal2;
+            console.log(matchT.goal2, match.goal1)
+            console.log(matchT.player1, matchT.player2, matchT.player2, match.player1)
+          }
+        }
+      };
       setIsEditEnabled(false);
     }
     setMatches(matchesTemplate);
@@ -99,6 +102,7 @@ function App() {
       <div>
         <Matches
           matches={matches}
+          setMatches={setMatches}
           setIsGameStarted={setIsGameStarted}
           setIsEditEnabled={setIsEditEnabled} />
       </div>
