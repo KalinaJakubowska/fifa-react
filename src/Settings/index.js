@@ -4,7 +4,7 @@ import SettingsForm from "./SettingsForm";
 import SettingsPlayers from "./SettingsPlayers";
 import SettingsStartButton from "./SettingsStartButton";
 
-const Settings = ({ players, addNewPlayer, removePlayer, generateMatches }) => (
+const Settings = ({ players, addNewPlayer, removePlayer, generateMatches, setIsGameStarted }) => (
   <div className="settings">
     <div className="settings__container">
       <h2 className="settings__header">tytuł</h2>
@@ -21,6 +21,7 @@ const Settings = ({ players, addNewPlayer, removePlayer, generateMatches }) => (
     <SettingsStartButton
       players={players}
       generateMatches={generateMatches}
+      setIsGameStarted={setIsGameStarted}
     />
   </div>
 );
