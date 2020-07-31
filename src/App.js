@@ -7,6 +7,7 @@ function App() {
     localStorage.getItem("players") === null ? "" : JSON.parse(localStorage.getItem("players")));
   const [matches, setMatches] = useState('');
   const [isGameStarted, setIsGameStarted] = useState(false);
+  const [isEditEnabled, setIsEditEnabled] = useState(false);
 
   const removePlayer = (id) => {
     setPlayers(players => players.filter(task => task.id !== id));
@@ -65,17 +66,21 @@ function App() {
         });
       }
     }
+    if (isEditEnabled) {
+      // for (let matchT of matchesTemplate) {
+      //   for (let match of matches) {
+      //     if ((matchT.player1 === match.player1 && matchT.player2 === match.player2) ||
+      //       (matchT.player1 === match.player2 && matchT.player2 === match.player1)) {
+      //       matchT.goal1 = match.goal1;
+      //       matchT.goal2 = match.goal2;
+      //     }
+      //   }
+      // };
+      setIsEditEnabled(false);
+    }
     setMatches(matchesTemplate);
-  };
-
-  if (isGameStarted) {
-    return (
-      <div>
-        <Matches matches={matches} players={players} setIsGameStarted={setIsGameStarted} />
-      </div>
-    )
   }
-  else {
+  if (!isGameStarted || isEditEnabled) {
     return (
       <div>
         <Settings
@@ -86,6 +91,16 @@ function App() {
           setIsGameStarted={setIsGameStarted}
           generateMatches={generateMatches}
         />
+      </div>
+    )
+  }
+  else {
+    return (
+      <div>
+        <Matches
+          matches={matches}
+          setIsGameStarted={setIsGameStarted}
+          setIsEditEnabled={setIsEditEnabled} />
       </div>
     )
   }

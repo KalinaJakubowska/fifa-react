@@ -1,10 +1,14 @@
 import React from "react";
 import ResetButton from "./ResetButton";
+import EditPlayersButton from "./EditPlayersButton";
 import "./style.css";
 
-const Matches = ({ matches, players, setIsGameStarted }) => {
+const Matches = ({ matches, setIsGameStarted, setIsEditEnabled }) => {
     return (
         <>
+            <EditPlayersButton
+                setIsEditEnabled={setIsEditEnabled}
+            />
             <div className="matches">
                 {matches && matches.map(({ id, player1, player2, goal1, goal2 }) =>
                     (<div key={id} className="match">
