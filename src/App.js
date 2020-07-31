@@ -17,8 +17,6 @@ function App() {
       ...players,
       {
         name,
-        done: false,
-        id: players.length ? players[players.length - 1].id + 1 : 1,
       }
     ])
   };
