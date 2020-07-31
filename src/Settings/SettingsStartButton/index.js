@@ -4,7 +4,7 @@ import "./style.css"
 const SettingsStartButton = ({ players, generateMatches }) => (
     <button
         onClick={generateMatches}
-        disabled={players.length < 2}
+        disabled={players.length < 3}
         className="buttons__button"
     >
         Rozpocznij turniej!
