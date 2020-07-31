@@ -68,19 +68,27 @@ function App() {
     setMatches(matchesTemplate);
   };
 
-  return (
-    <div>
-      <Settings
-        players={players}
-        addNewPlayer={addNewPlayer}
-        removePlayer={removePlayer}
-        isGameStarted={isGameStarted}
-        setIsGameStarted={setIsGameStarted}
-        generateMatches={generateMatches}
-      />
-      <Matches matches={matches} players={players} />
-    </div>
-  )
+  if (isGameStarted) {
+    return (
+      <div>
+        <Matches matches={matches} players={players} />
+      </div>
+    )
+  }
+  else {
+    return (
+      <div>
+        <Settings
+          players={players}
+          addNewPlayer={addNewPlayer}
+          removePlayer={removePlayer}
+          isGameStarted={isGameStarted}
+          setIsGameStarted={setIsGameStarted}
+          generateMatches={generateMatches}
+        />
+      </div>
+    )
+  }
 }
 
 export default App;
