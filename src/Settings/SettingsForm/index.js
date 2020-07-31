@@ -19,7 +19,7 @@ const SettingsForm = ({ addNewPlayer }) => {
                 value={newTaskContent}
                 className="settingsForm__input"
                 autoFocus
-                placeholder="Co jest do zrobienia?"
+                placeholder="Nazwa gracza"
                 onChange={({ target }) => setNewTaskContent(target.value)}
             />
             <button className="settingsForm__button">Dodaj nowego gracza</button>
