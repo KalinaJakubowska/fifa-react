@@ -69,7 +69,7 @@ function App() {
   if (isGameStarted) {
     return (
       <div>
-        <Matches matches={matches} players={players} />
+        <Matches matches={matches} players={players} setIsGameStarted={setIsGameStarted} />
       </div>
     )
   }
