@@ -7,6 +7,9 @@ function App() {
     localStorage.getItem("players") === null ? "" : JSON.parse(localStorage.getItem("players")));
   const [matches, setMatches] = useState('');
   const [isGameStarted, setIsGameStarted] = useState(false);
+  const [playersStats, setPlayersStats] = useState([]);
+
+
 
   const removePlayer = (id) => {
     setPlayers(players => players.filter(task => task.id !== id));
@@ -16,6 +19,7 @@ function App() {
     setPlayers(players => [
       ...players,
       {
+        id: players.length,
         name,
       }
     ])
@@ -69,7 +73,8 @@ function App() {
   if (isGameStarted) {
     return (
       <div>
-        <Matches matches={matches} players={players} />
+        <Matches matches={matches} players={players} setPlayersStats={setPlayersStats} />
+        {console.log(playersStats)}
       </div>
     )
   }
