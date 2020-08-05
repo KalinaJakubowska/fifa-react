@@ -6,13 +6,17 @@ function App() {
   const [players, setPlayers] = useState(
     JSON.parse(localStorage.getItem("players")) || "");
   const [matches, setMatches] = useState('');
-  const [isGameStarted, setIsGameStarted] = useState(false);
+  const [isGameStarted, setIsGameStarted] = useState(JSON.parse(localStorage.getItem("isGameStarted")) || false);
   const [playersStats, setPlayersStats] = useState([]);
   const [isEditEnabled, setIsEditEnabled] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("players", JSON.stringify(players));
   }, [players]);
+
+  useEffect(() => {
+    localStorage.setItem("isGameStarted", JSON.stringify(isGameStarted));
+  }, [isGameStarted]);
 
   const removePlayer = (id) => {
     setPlayers(players => players.filter(task => task.id !== id));
