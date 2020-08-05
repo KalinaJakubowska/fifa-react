@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import ResetButton from "./ResetButton";
 import EditPlayersButton from "./EditPlayersButton";
 import Match from "./Match";
+import ResultsTable from "./ResultsTable";
 import "./style.css";
 
 const Matches = ({ matches, setMatches, players, setPlayersStats, setIsGameStarted, setIsEditEnabled }) => {
@@ -76,6 +77,7 @@ const Matches = ({ matches, setMatches, players, setPlayersStats, setIsGameStart
                 )}
             </div>
             <ResetButton setIsGameStarted={setIsGameStarted} />
+            <ResultsTable playerStatsTemplate={playerStatsTemplate} />
         </>
     )
 }
