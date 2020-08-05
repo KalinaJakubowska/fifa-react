@@ -1,9 +1,33 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import "./style.css"
 
-const ResultsTable = (playerStatsTemplate) => {
+const ResultsTable = ({ playersStats }) => {
+    const [results, setResults] = useState();
 
+    useEffect(() => {
+        generateTable();
+    }, [playersStats]);
 
+    const generateTable = () => {
+        //  = playersStats.sort(((a, b) => a.points - b.points));
+        if (playersStats) {
+            console.log(playersStats);
+            let sortedPlayersStats = playersStats.map(playerStats => (
+                <tr key={playersStats.name}>
+                    <td>{0}</td>
+                    <td>{playerStats.name}</td>
+                    <td>{playerStats.matches}</td>
+                    <td>{playerStats.wins}</td>
+                    <td>{playerStats.draws}</td>
+                    <td>{playerStats.losses}</td>
+                    <td>{playerStats.goalsScored} : {playerStats.goalsConceded}</td>
+                    <td>{playerStats.goalsScored - playerStats.goalsConceded}</td>
+                    <td>{playerStats.points}</td>
+                </tr>
+            ));
+            setResults(sortedPlayersStats);
+        }
+    };
 
     return (
         <div>
@@ -23,7 +47,7 @@ const ResultsTable = (playerStatsTemplate) => {
                     </tr>
                 </thead>
                 <tbody>
-
+                    {results}
                 </tbody>
             </table>
 

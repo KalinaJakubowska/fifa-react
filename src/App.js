@@ -7,7 +7,7 @@ function App() {
     localStorage.getItem("players") === null ? "" : JSON.parse(localStorage.getItem("players")));
   const [matches, setMatches] = useState('');
   const [isGameStarted, setIsGameStarted] = useState(false);
-  const [playersStats, setPlayersStats] = useState([]);
+  const [playersStats, setPlayersStats] = useState();
   const [isEditEnabled, setIsEditEnabled] = useState(false);
 
   const removePlayer = (id) => {
@@ -91,6 +91,7 @@ function App() {
           matches={matches}
           setMatches={setMatches}
           players={players}
+          playersStats={playersStats}
           setPlayersStats={setPlayersStats}
           setIsGameStarted={setIsGameStarted}
           setIsEditEnabled={setIsEditEnabled} />
