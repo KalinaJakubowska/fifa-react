@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Settings from "./Settings";
 import Matches from "./Matches";
 
 function App() {
   const [players, setPlayers] = useState(
-    localStorage.getItem("players") === null ? "" : JSON.parse(localStorage.getItem("players")));
+    JSON.parse(localStorage.getItem("players")) || "");
   const [matches, setMatches] = useState('');
   const [isGameStarted, setIsGameStarted] = useState(false);
   const [playersStats, setPlayersStats] = useState([]);
   const [isEditEnabled, setIsEditEnabled] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("players", JSON.stringify(players));
+  }, [players]);
 
   const removePlayer = (id) => {
     setPlayers(players => players.filter(task => task.id !== id));
