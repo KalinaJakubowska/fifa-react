@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ResetButton from "./ResetButton";
 import EditPlayersButton from "./EditPlayersButton";
 import Match from "./Match";
@@ -64,7 +64,7 @@ const Matches = ({ matches, setMatches, players, setPlayersStats, setIsGameStart
         }
         setPlayersStats(playersStatsTemplate);
     }
-    
+
     return (
         <>
             <EditPlayersButton
