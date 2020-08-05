@@ -3,20 +3,31 @@ import Settings from "./Settings";
 import Matches from "./Matches";
 
 function App() {
-  const [players, setPlayers] = useState(
-    JSON.parse(localStorage.getItem("players")) || "");
-  const [matches, setMatches] = useState('');
+  const [players, setPlayers] = useState(JSON.parse(localStorage.getItem("players")) || "");
+  const [matches, setMatches] = useState(JSON.parse(localStorage.getItem("matches")) || "");
   const [isGameStarted, setIsGameStarted] = useState(JSON.parse(localStorage.getItem("isGameStarted")) || false);
-  const [playersStats, setPlayersStats] = useState([]);
-  const [isEditEnabled, setIsEditEnabled] = useState(false);
+  const [playersStats, setPlayersStats] = useState(JSON.parse(localStorage.getItem("playersStats")) || []);
+  const [isEditEnabled, setIsEditEnabled] = useState(JSON.parse(localStorage.getItem("isEditEnabled")) || false);
 
   useEffect(() => {
     localStorage.setItem("players", JSON.stringify(players));
   }, [players]);
 
   useEffect(() => {
+    localStorage.setItem("matches", JSON.stringify(matches));
+  }, [matches]);
+
+  useEffect(() => {
     localStorage.setItem("isGameStarted", JSON.stringify(isGameStarted));
   }, [isGameStarted]);
+
+  useEffect(() => {
+    localStorage.setItem("playersStats", JSON.stringify(playersStats));
+  }, [playersStats]);
+
+  useEffect(() => {
+    localStorage.setItem("isEditEnabled", JSON.stringify(isEditEnabled));
+  }, [isEditEnabled]);
 
   const removePlayer = (id) => {
     setPlayers(players => players.filter(task => task.id !== id));
