@@ -87,7 +87,13 @@ function App() {
   if (isGameStarted) {
     return (
       <div>
-        <Matches matches={matches} players={players} setPlayersStats={setPlayersStats} />
+        <Matches
+          matches={matches}
+          setMatches={setMatches}
+          players={players}
+          setPlayersStats={setPlayersStats}
+          setIsGameStarted={setIsGameStarted}
+          setIsEditEnabled={setIsEditEnabled} />
       </div>
     )
   }
