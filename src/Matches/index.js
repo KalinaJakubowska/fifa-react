@@ -5,7 +5,7 @@ import Match from "./Match";
 import ResultsTable from "./ResultsTable";
 import "./style.css";
 
-const Matches = ({ matches, setMatches, players, setPlayersStats, setIsGameStarted, setIsEditEnabled }) => {
+const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, setIsGameStarted, setIsEditEnabled }) => {
 
     useEffect(() => {
         addStats();
@@ -24,12 +24,14 @@ const Matches = ({ matches, setMatches, players, setPlayersStats, setIsGameStart
                     wins: 0,
                     draws: 0,
                     losses: 0,
+                    points: 0,
+                    matches: 0,
                 },
-            ]
+            ];
         }
 
         for (const match of matches) {
-            if (match.goal1 || match.goal2) {
+            if (match.goal1 && match.goal2) {
                 for (const playerStatsTemplate of playersStatsTemplate) {
                     if (match.player1 === playerStatsTemplate.name) {
                         playerStatsTemplate.goalsScored += +match.goal1;
@@ -43,6 +45,8 @@ const Matches = ({ matches, setMatches, players, setPlayersStats, setIsGameStart
                         else if (match.goal1 === match.goal2) {
                             playerStatsTemplate.draws += 1;
                         }
+                        playerStatsTemplate.points = playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
+                        playerStatsTemplate.matches = playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
                     }
 
 
@@ -58,6 +62,8 @@ const Matches = ({ matches, setMatches, players, setPlayersStats, setIsGameStart
                         else if (match.goal1 === match.goal2) {
                             playerStatsTemplate.draws += 1;
                         }
+                        playerStatsTemplate.points = playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
+                        playerStatsTemplate.matches = playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
                     }
                 }
             }
@@ -77,7 +83,7 @@ const Matches = ({ matches, setMatches, players, setPlayersStats, setIsGameStart
                 )}
             </div>
             <ResetButton setIsGameStarted={setIsGameStarted} />
-            <ResultsTable playerStatsTemplate={playerStatsTemplate} />
+            <ResultsTable playersStats={playersStats} />
         </>
     )
 }
