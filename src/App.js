@@ -35,8 +35,8 @@ function App() {
           id: matchesTemplate.length,
           player1: players[a].name,
           player2: players[(a + 1) % gameSize].name,
-          goal1: "-",
-          goal2: "-",
+          goal1: "",
+          goal2: "",
         });
       }
     }
@@ -48,8 +48,8 @@ function App() {
           id: matchesTemplate.length,
           player1: players[y].name,
           player2: players[(y + i + 1) % gameSize].name,
-          goal1: "-",
-          goal2: "-",
+          goal1: "",
+          goal2: "",
         });
       }
     }
@@ -61,8 +61,8 @@ function App() {
           id: matchesTemplate.length,
           player1: players[c].name,
           player2: players[(c + gameSize / 2) % gameSize].name,
-          goal1: "-",
-          goal2: "-",
+          goal1: "",
+          goal2: "",
         });
       }
     }
