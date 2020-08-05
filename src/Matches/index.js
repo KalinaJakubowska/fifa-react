@@ -1,7 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
+import ResetButton from "./ResetButton";
+import EditPlayersButton from "./EditPlayersButton";
+import Match from "./Match";
 import "./style.css";
 
-const Matches = ({ matches, players, setPlayersStats }) => {
+const Matches = ({ matches, setMatches, players, setPlayersStats, setIsGameStarted, setIsEditEnabled }) => {
 
     useEffect(() => {
         addStats();
@@ -61,19 +64,19 @@ const Matches = ({ matches, players, setPlayersStats }) => {
         }
         setPlayersStats(playersStatsTemplate);
     }
-
+    
     return (
-        <div className="matches">
-            {matches && matches.map(({ id, player1, player2, goal1, goal2 }) =>
-                (<div key={id} className="match">
-                    <div className="match__item match__item--player">{player1}</div>
-                    <div className="match__item match__item--goal">{goal1}</div>
-                    <div className="match__item match__item--vs">VS</div>
-                    <div className="match__item match__item--goal">{goal2}</div>
-                    <div className="match__item match__item--player">{player2}</div>
-                </div>)
-            )}
-        </div>
+        <>
+            <EditPlayersButton
+                setIsEditEnabled={setIsEditEnabled}
+            />
+            <div className="matches">
+                {matches && matches.map(match =>
+                    <Match key={match.id} id={match.id} match={match} matches={matches} setMatches={setMatches} />
+                )}
+            </div>
+            <ResetButton setIsGameStarted={setIsGameStarted} />
+        </>
     )
 }
 
