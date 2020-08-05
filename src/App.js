@@ -84,19 +84,6 @@ function App() {
     setMatches(matchesTemplate);
   };
 
-  if (isGameStarted) {
-    return (
-      <div>
-        <Matches
-          matches={matches}
-          setMatches={setMatches}
-          players={players}
-          setPlayersStats={setPlayersStats}
-          setIsGameStarted={setIsGameStarted}
-          setIsEditEnabled={setIsEditEnabled} />
-      </div>
-    )
-  }
   if (!isGameStarted || isEditEnabled) {
     return (
       <div>
@@ -117,6 +104,8 @@ function App() {
         <Matches
           matches={matches}
           setMatches={setMatches}
+          players={players}
+          setPlayersStats={setPlayersStats}
           setIsGameStarted={setIsGameStarted}
           setIsEditEnabled={setIsEditEnabled} />
       </div>
