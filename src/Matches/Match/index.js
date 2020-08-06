@@ -4,7 +4,7 @@ const Match = ({ selectedMatch, setSelectedMatch, id, match, matches, setMatches
     const onChange1 = ({ target }) => {
         setMatches(matches => matches.map(theMatch => {
             if (theMatch.id === id) {
-                return { ...theMatch, goal1: target.value }
+                return { ...theMatch, goal1: +target.value }
             }
 
             return theMatch
@@ -13,7 +13,7 @@ const Match = ({ selectedMatch, setSelectedMatch, id, match, matches, setMatches
     const onChange2 = ({ target }) => {
         setMatches(matches => matches.map(theMatch => {
             if (theMatch.id === id) {
-                return { ...theMatch, goal2: target.value }
+                return { ...theMatch, goal2: +target.value }
             }
 
             return theMatch
