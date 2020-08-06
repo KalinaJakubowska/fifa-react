@@ -9,10 +9,15 @@ const ResultsTable = ({ playersStats }) => {
     }, [playersStats]);
 
     const generateTable = () => {
-        //  = playersStats.sort(((a, b) => a.points - b.points));
         if (playersStats) {
-            console.log(playersStats);
-            let sortedPlayersStats = playersStats.map(playerStats => (
+            let sortedPlayersStats = playersStats.sort(
+                (a, b) => a.points !== b.points
+                    ? a.points - b.points
+                    : ((a.goalsScored - a.goalsConceded) !== (b.goalsScored - b.goalsConceded)
+                        ? (a.goalsScored - a.goalsConceded) - (b.goalsScored - b.goalsConceded)
+                        : a.goalsScored - b.goalsScored)
+            ).reverse();
+            sortedPlayersStats = sortedPlayersStats.map(playerStats => (
                 <tr key={playersStats.name}>
                     <td>{0}</td>
                     <td>{playerStats.name}</td>
