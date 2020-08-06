@@ -20,19 +20,15 @@ function App() {
   useEffect(() => {
     saveInLocalStorage("players", players);
   }, [players]);
-
   useEffect(() => {
     saveInLocalStorage("matches", matches);
   }, [matches]);
-
   useEffect(() => {
     saveInLocalStorage("isGameStarted", isGameStarted);
   }, [isGameStarted]);
-
   useEffect(() => {
     saveInLocalStorage("playersStats", playersStats);
   }, [playersStats]);
-
   useEffect(() => {
     saveInLocalStorage("isEditEnabled", isEditEnabled);
   }, [isEditEnabled]);
@@ -43,18 +39,29 @@ function App() {
 
   const addNewPlayer = (name) => {
     setPlayers(players => [
-      ...players,
-      {
-        name,
-      }
+      ...players, { name }
     ])
   };
+
+  const copyMatches = (matchesTemplate) => {
+    for (let matchT of matchesTemplate) {
+      for (let match of matches) {
+        const { goal1, goal2, player1, player2 } = match;
+        if ((matchT.player1 === player1 && matchT.player2 === player2) ||
+          (matchT.player1 === player2 && matchT.player2 === player1)) {
+          matchT.goal1 = goal1;
+          matchT.goal2 = goal2;
+        }
+      }
+    };
+    setIsEditEnabled(false);
+  }
 
   const generateMatches = () => {
     let matchesTemplate = [];
     const gameSize = players.length;
-    //first double queue, in two loops because of sorting (we don't want [ab, bc, cd] etc.)
 
+    //first double queue, in two loops because of sorting (we don't want [ab, bc, cd] etc.)
     for (let i = 0; i < 2; i++) {
       for (let a = i; a < gameSize; a = a + 2) {
         matchesTemplate.push({
@@ -93,17 +100,7 @@ function App() {
       }
     }
     if (isEditEnabled) {
-      for (let matchT of matchesTemplate) {
-        for (let match of matches) {
-          const { goal1, goal2, player1, player2 } = match;
-          if ((matchT.player1 === player1 && matchT.player2 === player2) ||
-            (matchT.player1 === player2 && matchT.player2 === player1)) {
-            matchT.goal1 = goal1;
-            matchT.goal2 = goal2;
-          }
-        }
-      };
-      setIsEditEnabled(false);
+      copyMatches(matchesTemplate);
     }
     setMatches(matchesTemplate);
   };
