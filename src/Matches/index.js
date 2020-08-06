@@ -75,23 +75,25 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
 
     return (
         <>
-            <EditPlayersButton
-                setIsEditEnabled={setIsEditEnabled}
-            />
-            <div className="matches">
-                {matches && matches.map(match =>
-                    <Match
-                        key={match.id}
-                        selectedMatch={selectedMatch}
-                        setSelectedMatch={setSelectedMatch}
-                        id={match.id} match={match}
-                        matches={matches}
-                        setMatches={setMatches}
-                    />
-                )}
+            <div className="matches__container matches__container--buttons">
+                <EditPlayersButton setIsEditEnabled={setIsEditEnabled} />
+                <ResetButton setIsGameStarted={setIsGameStarted} />
             </div>
-            <ResetButton setIsGameStarted={setIsGameStarted} />
-            <ResultsTable playersStats={playersStats} />
+            <div className="matches__container">
+                <div className="matches__matchesList">
+                    {matches && matches.map(match =>
+                        <Match
+                            key={match.id}
+                            selectedMatch={selectedMatch}
+                            setSelectedMatch={setSelectedMatch}
+                            id={match.id} match={match}
+                            matches={matches}
+                            setMatches={setMatches}
+                        />
+                    )}
+                </div>
+                <ResultsTable playersStats={playersStats} />
+            </div>
         </>
     )
 }

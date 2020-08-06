@@ -18,16 +18,16 @@ const ResultsTable = ({ playersStats }) => {
                         : a.goalsScored - b.goalsScored)
             ).reverse();
             sortedPlayersStats = sortedPlayersStats.map(playerStats => (
-                <tr key={playersStats.name}>
-                    <td>{0}</td>
-                    <td>{playerStats.name}</td>
-                    <td>{playerStats.matches}</td>
-                    <td>{playerStats.wins}</td>
-                    <td>{playerStats.draws}</td>
-                    <td>{playerStats.losses}</td>
-                    <td>{playerStats.goalsScored} : {playerStats.goalsConceded}</td>
-                    <td>{playerStats.goalsScored - playerStats.goalsConceded}</td>
-                    <td>{playerStats.points}</td>
+                <tr className="resultsTable__row" key={playersStats.name}>
+                    <td className="resultsTable__rowItem">{0}</td>
+                    <td className="resultsTable__rowItem">{playerStats.name}</td>
+                    <td className="resultsTable__rowItem">{playerStats.matches}</td>
+                    <td className="resultsTable__rowItem">{playerStats.wins}</td>
+                    <td className="resultsTable__rowItem">{playerStats.draws}</td>
+                    <td className="resultsTable__rowItem">{playerStats.losses}</td>
+                    <td className="resultsTable__rowItem">{playerStats.goalsScored} : {playerStats.goalsConceded}</td>
+                    <td className="resultsTable__rowItem">{playerStats.goalsScored - playerStats.goalsConceded}</td>
+                    <td className="resultsTable__rowItem resultsTable__rowItem--points">{playerStats.points}</td>
                 </tr>
             ));
             setResults(sortedPlayersStats);
@@ -35,20 +35,20 @@ const ResultsTable = ({ playersStats }) => {
     };
 
     return (
-        <div>
-            <table>
-                <caption><b>Tabela wyników</b></caption>
+        <div className="resultsTable__container">
+            <table className="resultsTable__table">
+                <caption className="resultsTable__caption"><b>Tabela wyników</b></caption>
                 <thead>
-                    <tr>
-                        <th>Lp</th>
-                        <th>Gracz</th>
-                        <th>M</th>
-                        <th>W</th>
-                        <th>R</th>
-                        <th>P</th>
-                        <th>B</th>
-                        <th>B +/-</th>
-                        <th>P</th>
+                    <tr className="resultsTable__headRow">
+                        <th className="resultsTable__rowItem resultsTable__rowItem--headItem">Lp</th>
+                        <th className="resultsTable__rowItem resultsTable__rowItem--headItem">Gracz</th>
+                        <th className="resultsTable__rowItem resultsTable__rowItem--headItem">M</th>
+                        <th className="resultsTable__rowItem resultsTable__rowItem--headItem">W</th>
+                        <th className="resultsTable__rowItem resultsTable__rowItem--headItem">R</th>
+                        <th className="resultsTable__rowItem resultsTable__rowItem--headItem">P</th>
+                        <th className="resultsTable__rowItem resultsTable__rowItem--headItem">B</th>
+                        <th className="resultsTable__rowItem resultsTable__rowItem--headItem">B +/-</th>
+                        <th className="resultsTable__rowItem resultsTable__rowItem--headItem">P</th>
                     </tr>
                 </thead>
                 <tbody>

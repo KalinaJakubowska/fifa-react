@@ -11,7 +11,7 @@ const SettingsStartButton = ({ players, generateMatches, setIsGameStarted }) => 
         <button
             onClick={onButtonClick}
             disabled={players.length < 3}
-            className="buttons__button"
+            className="buttons__button buttons__button--center"
         >
             Rozpocznij turniej!
         </button>
