@@ -35,8 +35,8 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
             if (match.goal1 && match.goal2) {
                 for (const playerStatsTemplate of playersStatsTemplate) {
                     if (match.player1 === playerStatsTemplate.name) {
-                        playerStatsTemplate.goalsScored += +match.goal1;
-                        playerStatsTemplate.goalsConceded += +match.goal2;
+                        playerStatsTemplate.goalsScored += match.goal1;
+                        playerStatsTemplate.goalsConceded += match.goal2;
                         if (match.goal1 > match.goal2) {
                             playerStatsTemplate.wins += 1;
                         }
@@ -53,8 +53,8 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
                     }
 
                     if (match.player2 === playerStatsTemplate.name) {
-                        playerStatsTemplate.goalsScored += +match.goal2;
-                        playerStatsTemplate.goalsConceded += +match.goal1;
+                        playerStatsTemplate.goalsScored += match.goal2;
+                        playerStatsTemplate.goalsConceded += match.goal1;
                         if (match.goal2 > match.goal1) {
                             playerStatsTemplate.wins += 1;
                         }
