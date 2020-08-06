@@ -88,10 +88,11 @@ function App() {
     if (isEditEnabled) {
       for (let matchT of matchesTemplate) {
         for (let match of matches) {
-          if ((matchT.player1 === match.player1 && matchT.player2 === match.player2) ||
-            (matchT.player1 === match.player2 && matchT.player2 === match.player1)) {
-            matchT.goal1 = match.goal1;
-            matchT.goal2 = match.goal2;
+          const {goal1, goal2, player1, player2} = match;
+          if ((matchT.player1 === player1 && matchT.player2 === player2) ||
+            (matchT.player1 === player2 && matchT.player2 === player1)) {
+            matchT.goal1 = goal1;
+            matchT.goal2 = goal2;
           }
         }
       };
