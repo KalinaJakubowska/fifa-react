@@ -45,8 +45,10 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
                         else if (match.goal1 === match.goal2) {
                             playerStatsTemplate.draws += 1;
                         }
-                        playerStatsTemplate.points = playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
-                        playerStatsTemplate.matches = playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
+                        playerStatsTemplate.points = 
+                            playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
+                        playerStatsTemplate.matches = 
+                            playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
                     }
 
 
@@ -69,7 +71,6 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
             }
         }
         setPlayersStats(playersStatsTemplate);
-        console.log(playersStatsTemplate);
     }
 
     return (
