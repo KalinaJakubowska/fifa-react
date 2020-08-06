@@ -6,7 +6,7 @@
 .settingsPlayers__item {
     display: grid;
     grid-template-columns: 1fr auto;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid hsla(239, 94%, 9%, 0.8);
     margin: 0 auto;
 }
 
@@ -15,7 +15,9 @@
 }
 
 .settingsPlayers__button {
-    background-color: red;
+    background-color: hsl(0, 100%, 40%);
+    background-image: url("./delete.png");
+    background-position: cover;
     width: 40px;
     height: 40px;
     margin: 10px;
@@ -25,5 +27,5 @@
 }
 
 .settingsPlayers__button:hover {
-    background-color: hsl(0, 100%, 60%);
+    background-color: hsl(0, 100%, 45%);
 }

@@ -1,15 +1,24 @@
 .buttons__button {
     display: block;
     margin: 0 auto;
-    color: teal;
-    border: none;
-    background-color: #fff;
+    color: #fff;
+    background-color: hsl(201, 100%, 36%);
     padding: 10px;
-    transition: 0.25s;
+    border: 2px solid hsl(239, 94%, 9%);;
+    border-radius: 4px;
+    transition: 0.5s;
+    height: 45px;
 }
 
 .buttons__button:hover {
-    color: hsl(180, 100%, 35%);
+    background-color: hsl(201, 100%, 46%);
+    transform: scale(1.05);
+}
+
+@media (max-width: 767px) {
+    .buttons__button:hover {
+        transform: scale(1.02);
+    }
 }
 
 .buttons__button:disabled {

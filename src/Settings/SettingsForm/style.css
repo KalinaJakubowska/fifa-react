@@ -15,20 +15,27 @@
 .settingsForm__input {
     padding: 10px;
     height: 45px;
+    background-color: hsl(239, 94%, 25%);
+    color: #fff;
+}
+
+.settingsForm__input::placeholder {
+    color: #ccc;
 }
 
 .settingsForm__button {
     color: #fff;
-    background-color: teal;
+    background-color: hsl(201, 100%, 36%);
     padding: 10px;
-    border: none;
+    border: 2px solid hsl(239, 94%, 9%);;
+    border-radius: 4px;
     transition: 0.5s;
     height: 45px;
 }
 
 .settingsForm__button:hover {
-    background-color: hsl(180, 100%, 35%);
-    transform: scale(1.1);
+    background-color: hsl(201, 100%, 46%);
+    transform: scale(1.05);
 }
 
 @media (max-width: 767px) {

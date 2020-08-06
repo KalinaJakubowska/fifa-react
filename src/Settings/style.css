@@ -1,17 +1,14 @@
 .settings {
     min-height: 100px;
-    background-color: #fff;
+    background-color: #03045E;
     max-width: 1000px;
     margin: 10px auto;
-    box-shadow: 0 0 5px 2px #ddd;
+    box-shadow: 0 0 5px 2px hsl(239, 94%, 11%);
+    padding-bottom: 20px;
 }
 
 .settings__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    grid-gap: 10px;
-    border-bottom: 2px solid #eee;
+    border-bottom: 2px solid hsla(239, 94%, 9%, 0.8);
 }
 
 @media (max-width: 767px) {
@@ -22,6 +19,8 @@
 
 .settings__header {
     font-weight: 700;
+    font-size: 40px;
     margin: 0;
     padding: 20px;
+    text-align: center;
 }
