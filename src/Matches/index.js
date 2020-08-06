@@ -70,7 +70,13 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
                 }
             }
         }
-        setPlayersStats(playersStatsTemplate);
+        setPlayersStats(playersStatsTemplate.sort(
+            (a, b) => a.points !== b.points
+                ? a.points - b.points
+                : ((a.goalsScored - a.goalsConceded) !== (b.goalsScored - b.goalsConceded)
+                    ? (a.goalsScored - a.goalsConceded) - (b.goalsScored - b.goalsConceded)
+                    : a.goalsScored - b.goalsScored)
+        ).reverse());
     }
 
     return (
