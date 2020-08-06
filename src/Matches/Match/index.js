@@ -1,5 +1,4 @@
 import React from "react";
-import "./style.css";
 
 const Match = ({ id, match, matches, setMatches }) => {
     const onChange1 = ({ target }) => {
