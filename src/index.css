@@ -7,8 +7,11 @@ html {
 }
 
 body {
-  background-color: #eee;
+  background-color: rgb(1, 9, 114);
+  background-image: url("./background.jpg");
+  background-position: cover;
   font-family: 'lato', sans-serif;
+  color: #CAF0F8;
 }
 
 @media (max-width: 767px) {
