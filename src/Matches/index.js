@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import ResetButton from "./ResetButton";
 import EditPlayersButton from "./EditPlayersButton";
 import Match from "./Match";
@@ -6,6 +6,7 @@ import ResultsTable from "./ResultsTable";
 import "./style.css";
 
 const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, setIsGameStarted, setIsEditEnabled }) => {
+    const [selectedMatch, setSelectedMatch] = useState(0);
 
     useEffect(() => {
         addStats();
@@ -45,12 +46,11 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
                         else if (match.goal1 === match.goal2) {
                             playerStatsTemplate.draws += 1;
                         }
-                        playerStatsTemplate.points = 
+                        playerStatsTemplate.points =
                             playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
-                        playerStatsTemplate.matches = 
+                        playerStatsTemplate.matches =
                             playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
                     }
-
 
                     if (match.player2 === playerStatsTemplate.name) {
                         playerStatsTemplate.goalsScored += +match.goal2;
@@ -80,7 +80,14 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
             />
             <div className="matches">
                 {matches && matches.map(match =>
-                    <Match key={match.id} id={match.id} match={match} matches={matches} setMatches={setMatches} />
+                    <Match
+                        key={match.id}
+                        selectedMatch={selectedMatch}
+                        setSelectedMatch={setSelectedMatch}
+                        id={match.id} match={match}
+                        matches={matches}
+                        setMatches={setMatches}
+                    />
                 )}
             </div>
             <ResetButton setIsGameStarted={setIsGameStarted} />

@@ -1,11 +1,12 @@
 import React from "react";
 
-const Match = ({ id, match, matches, setMatches }) => {
+const Match = ({ selectedMatch, setSelectedMatch, id, match, matches, setMatches }) => {
     const onChange1 = ({ target }) => {
         setMatches(matches => matches.map(theMatch => {
             if (theMatch.id === id) {
                 return { ...theMatch, goal1: target.value }
             }
+
             return theMatch
         }));
     }
@@ -14,19 +15,24 @@ const Match = ({ id, match, matches, setMatches }) => {
             if (theMatch.id === id) {
                 return { ...theMatch, goal2: target.value }
             }
+
             return theMatch
         }));
     }
+    const onMatchClick = () => {
+        setSelectedMatch(id);
+    }
 
     return (
-        <div className="match">
+        <div onClick={onMatchClick} className={`match${selectedMatch === id ? " match--selected" : ""}`}>
             <div className="match__item match__item--player">{matches[id].player1}</div>
             <div className="match__item match__item--goal">
-                <input value={match.goal1} onChange={onChange1} />
+                {selectedMatch === id ? <input value={match.goal1} onChange={onChange1} /> : match.goal1}
+
             </div>
             <div className="match__item match__item--vs">VS</div>
             <div className="match__item match__item--goal">
-                <input value={match.goal2} onChange={onChange2} />
+                {selectedMatch === id ? <input value={match.goal2} onChange={onChange2} /> : match.goal2}
             </div>
             <div className="match__item match__item--player">{matches[id].player2}</div>
         </div>
