@@ -6,7 +6,7 @@
     padding: 10px;
     border: 2px solid hsl(239, 94%, 9%);;
     border-radius: 4px;
-    transition: 0.5s;
+    transition: 0.3s;
     height: 45px;
 }
 
@@ -23,4 +23,6 @@
 
 .buttons__button:disabled {
     color: #ccc;
+    transform: none;
+    background-color: hsl(201, 30%, 36%);
 }

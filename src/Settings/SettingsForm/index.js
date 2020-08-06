@@ -22,7 +22,7 @@ const SettingsForm = ({ addNewPlayer }) => {
                 placeholder="Podaj nazwę gracza"
                 onChange={({ target }) => setNewTaskContent(target.value)}
             />
-            <button className="settingsForm__button">Dodaj nowego gracza</button>
+            <button className="buttons__button">Dodaj nowego gracza</button>
         </form>
     );
 };
