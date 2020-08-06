@@ -1,0 +1,51 @@
+.match__box {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    list-style: none;
+    padding: 0;
+    border-bottom: 2px solid hsla(239, 94%, 9%, 0.8);
+    margin: 0;
+    max-width: 450px;
+    min-height: 60px;
+}
+
+.match__box:hover {
+    background-color: hsl(239, 94%, 15%);
+}
+
+.match__item {
+    text-align: center;
+    align-self: center;
+}
+
+.match__item--vs {
+    font-weight: 700;
+    color: #000;
+    text-shadow: 0px 0px 8px #ADE8F4;
+    font-size: 18px;
+}
+
+.match__item--goal {
+    font-size: 25px;
+    padding: 0;
+}
+
+.match__item--player {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.match__input {
+    display: block;
+    margin: 0 auto;
+    max-width: 53px;
+    padding: 10px;
+    height: 30px;
+    background-color: hsl(239, 94%, 25%);
+    color: #fff;
+    font-size: 15px;
+}
+
+.match__input::placeholder {
+    color: #ccc;
+}
