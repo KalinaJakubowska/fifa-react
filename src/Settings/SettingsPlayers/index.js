@@ -9,12 +9,12 @@ const SettingsPlayers = ({ players, removePlayer }) => {
     return (
         < ul className="settingsPlayers" >
             {
-                players.map(({ name, id }) => (
-                    <li key={id} className="settingsPlayers__item">
+                players.map(({ name }) => (
+                    <li key={name} className="settingsPlayers__item">
                         <span className="settingsPlayers__task">
                             {name}
                         </span>
-                        <button className="settingsPlayers__button" onClick={() => removePlayer(id)} />
+                        <button className="settingsPlayers__button" onClick={() => removePlayer(name)} />
                     </li>
                 ))
             }

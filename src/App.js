@@ -37,15 +37,14 @@ function App() {
     saveInLocalStorage("isEditEnabled", isEditEnabled);
   }, [isEditEnabled]);
 
-  const removePlayer = (id) => {
-    setPlayers(players => players.filter(task => task.id !== id));
+  const removePlayer = (name) => {
+    setPlayers(players => players.filter(player => player.name !== name));
   };
 
   const addNewPlayer = (name) => {
     setPlayers(players => [
       ...players,
       {
-        id: players.length,
         name,
       }
     ])
@@ -83,11 +82,11 @@ function App() {
 
     //last single or double queue, depends on even or odd players number
     if ((gameSize % 2) === 0) {
-      for (let c = 0; c < gameSize / 2; c++) {
+      for (let i = 0; i < gameSize / 2; i++) {
         matchesTemplate.push({
           id: matchesTemplate.length,
-          player1: players[c].name,
-          player2: players[(c + gameSize / 2) % gameSize].name,
+          player1: players[i].name,
+          player2: players[(i + gameSize / 2) % gameSize].name,
           goal1: "",
           goal2: "",
         });
