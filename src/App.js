@@ -2,31 +2,39 @@ import React, { useState, useEffect } from 'react';
 import Settings from "./Settings";
 import Matches from "./Matches";
 
+const saveInLocalStorage = (key, item) => {
+  localStorage.setItem(key, JSON.stringify(item));
+}
+
+const getFromLocalStorage = (item) => {
+  return JSON.parse(localStorage.getItem(item));
+}
+
 function App() {
-  const [players, setPlayers] = useState(JSON.parse(localStorage.getItem("players")) || "");
-  const [matches, setMatches] = useState(JSON.parse(localStorage.getItem("matches")) || "");
-  const [isGameStarted, setIsGameStarted] = useState(JSON.parse(localStorage.getItem("isGameStarted")) || false);
-  const [playersStats, setPlayersStats] = useState(JSON.parse(localStorage.getItem("playersStats")) || []);
-  const [isEditEnabled, setIsEditEnabled] = useState(JSON.parse(localStorage.getItem("isEditEnabled")) || false);
+  const [players, setPlayers] = useState(getFromLocalStorage("players") || "");
+  const [matches, setMatches] = useState(getFromLocalStorage("matches") || "");
+  const [isGameStarted, setIsGameStarted] = useState(getFromLocalStorage("isGameStarted" || false));
+  const [playersStats, setPlayersStats] = useState(getFromLocalStorage("playersStats") || []);
+  const [isEditEnabled, setIsEditEnabled] = useState(getFromLocalStorage("isEditEnabled") || false);
 
   useEffect(() => {
-    localStorage.setItem("players", JSON.stringify(players));
+    saveInLocalStorage("players", players);
   }, [players]);
 
   useEffect(() => {
-    localStorage.setItem("matches", JSON.stringify(matches));
+    saveInLocalStorage("matches", matches);
   }, [matches]);
 
   useEffect(() => {
-    localStorage.setItem("isGameStarted", JSON.stringify(isGameStarted));
+    saveInLocalStorage("isGameStarted", isGameStarted);
   }, [isGameStarted]);
 
   useEffect(() => {
-    localStorage.setItem("playersStats", JSON.stringify(playersStats));
+    saveInLocalStorage("playersStats", playersStats);
   }, [playersStats]);
 
   useEffect(() => {
-    localStorage.setItem("isEditEnabled", JSON.stringify(isEditEnabled));
+    saveInLocalStorage("isEditEnabled", isEditEnabled);
   }, [isEditEnabled]);
 
   const removePlayer = (id) => {
@@ -88,7 +96,7 @@ function App() {
     if (isEditEnabled) {
       for (let matchT of matchesTemplate) {
         for (let match of matches) {
-          const {goal1, goal2, player1, player2} = match;
+          const { goal1, goal2, player1, player2 } = match;
           if ((matchT.player1 === player1 && matchT.player2 === player2) ||
             (matchT.player1 === player2 && matchT.player2 === player1)) {
             matchT.goal1 = goal1;
