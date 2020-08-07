@@ -32,18 +32,19 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
         }
 
         for (const match of matches) {
-            if (match.goal1 && match.goal2) {
+            const {goal1, goal2, player1, player2} = match;
+            if (goal1 && goal2) {
                 for (const playerStatsTemplate of playersStatsTemplate) {
-                    if (match.player1 === playerStatsTemplate.name) {
-                        playerStatsTemplate.goalsScored += +match.goal1;
-                        playerStatsTemplate.goalsConceded += +match.goal2;
-                        if (match.goal1 > match.goal2) {
+                    if (player1 === playerStatsTemplate.name) {
+                        playerStatsTemplate.goalsScored += goal1;
+                        playerStatsTemplate.goalsConceded += goal2;
+                        if (goal1 > goal2) {
                             playerStatsTemplate.wins += 1;
                         }
-                        else if (match.goal1 < match.goal2) {
+                        else if (goal1 < goal2) {
                             playerStatsTemplate.losses += 1;
                         }
-                        else if (match.goal1 === match.goal2) {
+                        else if (goal1 === goal2) {
                             playerStatsTemplate.draws += 1;
                         }
                         playerStatsTemplate.points =
@@ -52,25 +53,33 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
                             playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
                     }
 
-                    if (match.player2 === playerStatsTemplate.name) {
-                        playerStatsTemplate.goalsScored += +match.goal2;
-                        playerStatsTemplate.goalsConceded += +match.goal1;
-                        if (match.goal2 > match.goal1) {
+                    if (player2 === playerStatsTemplate.name) {
+                        playerStatsTemplate.goalsScored += goal2;
+                        playerStatsTemplate.goalsConceded += goal1;
+                        if (goal2 > goal1) {
                             playerStatsTemplate.wins += 1;
                         }
-                        else if (match.goal2 < match.goal1) {
+                        else if (goal2 < goal1) {
                             playerStatsTemplate.losses += 1;
                         }
-                        else if (match.goal1 === match.goal2) {
+                        else if (goal1 === goal2) {
                             playerStatsTemplate.draws += 1;
                         }
-                        playerStatsTemplate.points = playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
-                        playerStatsTemplate.matches = playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
+                        playerStatsTemplate.points =
+                            playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
+                        playerStatsTemplate.matches =
+                            playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
                     }
                 }
             }
         }
-        setPlayersStats(playersStatsTemplate);
+        setPlayersStats(playersStatsTemplate.sort(
+            (a, b) => a.points !== b.points
+                ? a.points - b.points
+                : ((a.goalsScored - a.goalsConceded) !== (b.goalsScored - b.goalsConceded)
+                    ? (a.goalsScored - a.goalsConceded) - (b.goalsScored - b.goalsConceded)
+                    : a.goalsScored - b.goalsScored)
+        ).reverse());
     }
 
     return (

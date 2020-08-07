@@ -2,52 +2,66 @@ import React, { useState, useEffect } from 'react';
 import Settings from "./Settings";
 import Matches from "./Matches";
 
+const saveInLocalStorage = (key, item) => {
+  localStorage.setItem(key, JSON.stringify(item));
+}
+
+const getFromLocalStorage = (item) => {
+  return JSON.parse(localStorage.getItem(item));
+}
+
 function App() {
-  const [players, setPlayers] = useState(JSON.parse(localStorage.getItem("players")) || "");
-  const [matches, setMatches] = useState(JSON.parse(localStorage.getItem("matches")) || "");
-  const [isGameStarted, setIsGameStarted] = useState(JSON.parse(localStorage.getItem("isGameStarted")) || false);
-  const [playersStats, setPlayersStats] = useState(JSON.parse(localStorage.getItem("playersStats")) || []);
-  const [isEditEnabled, setIsEditEnabled] = useState(JSON.parse(localStorage.getItem("isEditEnabled")) || false);
+  const [players, setPlayers] = useState(getFromLocalStorage("players") || "");
+  const [matches, setMatches] = useState(getFromLocalStorage("matches") || "");
+  const [isGameStarted, setIsGameStarted] = useState(getFromLocalStorage("isGameStarted" || false));
+  const [playersStats, setPlayersStats] = useState(getFromLocalStorage("playersStats") || []);
+  const [isEditEnabled, setIsEditEnabled] = useState(getFromLocalStorage("isEditEnabled") || false);
 
   useEffect(() => {
-    localStorage.setItem("players", JSON.stringify(players));
+    saveInLocalStorage("players", players);
   }, [players]);
-
   useEffect(() => {
-    localStorage.setItem("matches", JSON.stringify(matches));
+    saveInLocalStorage("matches", matches);
   }, [matches]);
-
   useEffect(() => {
-    localStorage.setItem("isGameStarted", JSON.stringify(isGameStarted));
+    saveInLocalStorage("isGameStarted", isGameStarted);
   }, [isGameStarted]);
-
   useEffect(() => {
-    localStorage.setItem("playersStats", JSON.stringify(playersStats));
+    saveInLocalStorage("playersStats", playersStats);
   }, [playersStats]);
-
   useEffect(() => {
-    localStorage.setItem("isEditEnabled", JSON.stringify(isEditEnabled));
+    saveInLocalStorage("isEditEnabled", isEditEnabled);
   }, [isEditEnabled]);
 
-  const removePlayer = (id) => {
-    setPlayers(players => players.filter(task => task.id !== id));
+  const removePlayer = (name) => {
+    setPlayers(players => players.filter(player => player.name !== name));
   };
 
   const addNewPlayer = (name) => {
     setPlayers(players => [
-      ...players,
-      {
-        id: players.length,
-        name,
-      }
+      ...players, { name }
     ])
   };
+
+  const copyMatches = (matchesTemplate) => {
+    for (let matchT of matchesTemplate) {
+      for (let match of matches) {
+        const { goal1, goal2, player1, player2 } = match;
+        if ((matchT.player1 === player1 && matchT.player2 === player2) ||
+          (matchT.player1 === player2 && matchT.player2 === player1)) {
+          matchT.goal1 = goal1;
+          matchT.goal2 = goal2;
+        }
+      }
+    };
+    setIsEditEnabled(false);
+  }
 
   const generateMatches = () => {
     let matchesTemplate = [];
     const gameSize = players.length;
-    //first double queue, in two loops because of sorting (we don't want [ab, bc, cd] etc.)
 
+    //first double queue, in two loops because of sorting (we don't want [ab, bc, cd] etc.)
     for (let i = 0; i < 2; i++) {
       for (let a = i; a < gameSize; a = a + 2) {
         matchesTemplate.push({
@@ -75,30 +89,18 @@ function App() {
 
     //last single or double queue, depends on even or odd players number
     if ((gameSize % 2) === 0) {
-      for (let c = 0; c < gameSize / 2; c++) {
+      for (let i = 0; i < gameSize / 2; i++) {
         matchesTemplate.push({
           id: matchesTemplate.length,
-          player1: players[c].name,
-          player2: players[(c + gameSize / 2) % gameSize].name,
+          player1: players[i].name,
+          player2: players[(i + gameSize / 2) % gameSize].name,
           goal1: "",
           goal2: "",
         });
       }
     }
     if (isEditEnabled) {
-      for (let matchT of matchesTemplate) {
-        for (let match of matches) {
-          if ((matchT.player1 === match.player1 && matchT.player2 === match.player2) ||
-            (matchT.player1 === match.player2 && matchT.player2 === match.player1)) {
-            matchT.goal1 = match.goal1;
-            console.log(matchT.goal1, match.goal1)
-            matchT.goal2 = match.goal2;
-            console.log(matchT.goal2, match.goal1)
-            console.log(matchT.player1, matchT.player2, matchT.player2, match.player1)
-          }
-        }
-      };
-      setIsEditEnabled(false);
+      copyMatches(matchesTemplate);
     }
     setMatches(matchesTemplate);
   };
