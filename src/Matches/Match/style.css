@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     list-style: none;
-    padding: 0;
+    padding: 10px;
     border-bottom: 2px solid hsla(239, 94%, 9%, 0.8);
     margin: 0;
     max-width: 450px;
@@ -44,6 +44,12 @@
     background-color: hsl(239, 94%, 25%);
     color: #fff;
     font-size: 15px;
+}
+
+@media (max-width: 550px) {
+    .match__input {
+        max-width: 42px;
+    }
 }
 
 .match__input::placeholder {

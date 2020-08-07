@@ -12,6 +12,14 @@
     box-shadow: 0 0 5px 2px hsl(239, 94%, 11%);
 }
 
+@media (max-width: 767px) {
+    .matches__container {
+        grid-template-columns: 1fr;
+        max-height: 1000px;
+        padding: 10px;
+    }
+}
+
 .matches__container--buttons {
     max-width: 500px;
     padding: 5px;
@@ -24,4 +32,10 @@
     box-shadow: 0 0 5px 2px hsl(239, 94%, 11%);
     max-height: 550px;
     overflow-y: auto;
+}
+
+@media (max-width: 767px) {
+    .matches__matchesList {
+        max-height: 300px;
+    }
 }
