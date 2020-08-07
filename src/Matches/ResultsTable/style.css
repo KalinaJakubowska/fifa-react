@@ -54,6 +54,20 @@
     max-width: 100px;
 }
 
+@media (max-width: 550px) {
+    .resultsTable__rowItem {
+        padding: 10px 5px;
+        max-width: 60px;
+    }
+}
+
+@media (max-width: 400px) {
+    .resultsTable__rowItem {
+        padding: 10px 3px;
+        max-width: 60px;
+    }
+}
+
 .resultsTable__rowItem--headItem {
     
     border-bottom: 1px solid white;
