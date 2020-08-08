@@ -9,7 +9,8 @@ html {
 body {
   background-color: rgb(1, 9, 114);
   background-image: url("./background.jpg");
-  background-position: cover;
+  background-position: fixed;
+  background-size: cover;
   font-family: 'lato', sans-serif;
   color: #CAF0F8;
 }
