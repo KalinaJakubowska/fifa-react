@@ -38,6 +38,10 @@ function App() {
   };
 
   const addNewPlayer = (name) => {
+    if (players.find(player => player.name === name)) {
+      return;
+    }
+
     setPlayers(players => [
       ...players, { name }
     ])
