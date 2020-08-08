@@ -49,6 +49,7 @@
     padding: 10px;
     height: 30px;
     background-color: hsl(239, 94%, 25%);
+    border: 2px solid hsla(239, 94%, 9%, 0.8);
     color: #fff;
     font-size: 15px;
 }
