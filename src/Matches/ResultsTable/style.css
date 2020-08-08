@@ -4,7 +4,6 @@
     padding: 10px;
     display: flex;
     justify-content: center;
-
 }
 
 .resultsTable__table {
@@ -26,7 +25,6 @@
     color: white;
 }
 
-
 .resultsTable__row:nth-child(even):hover {
     background-color: hsl(239, 94%, 23%);
 }
@@ -43,7 +41,6 @@
     color: #ADE8F4;
     border-bottom: 1px solid white;
     padding: 10px;
-
 }
 
 .resultsTable__rowItem {
@@ -69,7 +66,6 @@
 }
 
 .resultsTable__rowItem--headItem {
-    
     border-bottom: 1px solid white;
 }
 
