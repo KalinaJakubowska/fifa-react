@@ -12,7 +12,7 @@ const ResultsTable = ({ playersStats }) => {
         if (playersStats) {
             let a=0;
             const playersStatsDisplayContent = playersStats.map(playerStats => (
-                <tr className="resultsTable__row" key={playersStats.name}>
+                <tr className="resultsTable__row" key={playerStats.name}>
                     <td className="resultsTable__rowItem">{++a}</td>
                     <td className="resultsTable__rowItem">{playerStats.name}</td>
                     <td className="resultsTable__rowItem">{playerStats.matches}</td>
