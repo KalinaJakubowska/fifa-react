@@ -1,4 +1,4 @@
-.match__box {
+.match {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     list-style: none;
@@ -33,6 +33,13 @@
 .match__item--player {
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: left;
+}
+
+.match__item--secondPlayer {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: right;
 }
 
 .match__input {

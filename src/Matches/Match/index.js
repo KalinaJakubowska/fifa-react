@@ -25,7 +25,7 @@ const Match = ({ selectedMatch, setSelectedMatch, id, match, matches, setMatches
     }
 
     return (
-        <div onClick={onMatchClick} className={`match__box${selectedMatch === id ? " match__box--selected" : ""}`}>
+        <div onClick={onMatchClick} className={`match${selectedMatch === id ? " match--selected" : ""}`}>
             <div className="match__item match__item--player">{matches[id].player1}</div>
             <div className="match__item match__item--goal">
                 {selectedMatch === id ? <input className="match__input" value={match.goal1} onChange={onChange1} /> : match.goal1}
@@ -35,7 +35,7 @@ const Match = ({ selectedMatch, setSelectedMatch, id, match, matches, setMatches
             <div className="match__item match__item--goal">
                 {selectedMatch === id ? <input className="match__input" value={match.goal2} onChange={onChange2} /> : match.goal2}
             </div>
-            <div className="match__item match__item--player">{matches[id].player2}</div>
+            <div className="match__item match__item--secondPlayer">{matches[id].player2}</div>
         </div>
     )
 }
