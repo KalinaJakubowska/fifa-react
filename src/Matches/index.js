@@ -32,7 +32,7 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
         }
 
         for (const match of matches) {
-            const {goal1, goal2, player1, player2} = match;
+            const { goal1, goal2, player1, player2 } = match;
             if (goal1 && goal2) {
                 for (const playerStatsTemplate of playersStatsTemplate) {
                     if (player1 === playerStatsTemplate.name) {
@@ -89,19 +89,23 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
                 <ResetButton setIsGameStarted={setIsGameStarted} />
             </div>
             <div className="matches__container">
-                <div className="matches__matchesList">
-                    {matches && matches.map(match =>
-                        <Match
-                            key={match.id}
-                            selectedMatch={selectedMatch}
-                            setSelectedMatch={setSelectedMatch}
-                            id={match.id} match={match}
-                            matches={matches}
-                            setMatches={setMatches}
-                        />
-                    )}
+                <div className="matches__box">
+                    <div className="matches__matchesList">
+                        {matches && matches.map(match =>
+                            <Match
+                                key={match.id}
+                                selectedMatch={selectedMatch}
+                                setSelectedMatch={setSelectedMatch}
+                                id={match.id} match={match}
+                                matches={matches}
+                                setMatches={setMatches}
+                            />
+                        )}
+                    </div>
                 </div>
-                <ResultsTable playersStats={playersStats} />
+                <div className="matches__box">
+                    <ResultsTable playersStats={playersStats} />
+                </div>
             </div>
         </>
     )
