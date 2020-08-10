@@ -38,7 +38,7 @@ function App() {
   };
 
   const addNewPlayer = (name) => {
-    if (players.find(player => player.name === name)) {
+    if (players && players.find(player => player.name === name)) {
       return;
     }
 
