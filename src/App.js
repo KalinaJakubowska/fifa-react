@@ -2,36 +2,29 @@ import React, { useState, useEffect } from 'react';
 import Settings from "./Settings";
 import Matches from "./Matches";
 
-const saveInLocalStorage = (key, item) => {
-  localStorage.setItem(key, JSON.stringify(item));
-}
+const useStateItem = (keyName, initialValue) => {
+  const getInitialState = () => {
+    if (localStorage.getItem(keyName) === null) {
+      return initialValue;
+    }
+    return JSON.parse(localStorage.getItem(keyName));
+  };
 
-const getFromLocalStorage = (item) => {
-  return JSON.parse(localStorage.getItem(item));
-}
+  const [state, setState] = useState(getInitialState);
+
+  useEffect(() => {
+    localStorage.setItem(keyName, JSON.stringify(state));
+  }, [state]);
+
+  return [state, setState];
+};
 
 function App() {
-  const [players, setPlayers] = useState(getFromLocalStorage("players") || "");
-  const [matches, setMatches] = useState(getFromLocalStorage("matches") || "");
-  const [isGameStarted, setIsGameStarted] = useState(getFromLocalStorage("isGameStarted" || false));
-  const [playersStats, setPlayersStats] = useState(getFromLocalStorage("playersStats") || []);
-  const [isEditEnabled, setIsEditEnabled] = useState(getFromLocalStorage("isEditEnabled") || false);
-
-  useEffect(() => {
-    saveInLocalStorage("players", players);
-  }, [players]);
-  useEffect(() => {
-    saveInLocalStorage("matches", matches);
-  }, [matches]);
-  useEffect(() => {
-    saveInLocalStorage("isGameStarted", isGameStarted);
-  }, [isGameStarted]);
-  useEffect(() => {
-    saveInLocalStorage("playersStats", playersStats);
-  }, [playersStats]);
-  useEffect(() => {
-    saveInLocalStorage("isEditEnabled", isEditEnabled);
-  }, [isEditEnabled]);
+  const [players, setPlayers] = useStateItem("players", "");
+  const [matches, setMatches] = useStateItem("matches", "");
+  const [isGameStarted, setIsGameStarted] = useStateItem("isGameStarted", false);
+  const [playersStats, setPlayersStats] = useStateItem("playersStats", []);
+  const [isEditEnabled, setIsEditEnabled] = useStateItem("isEditEnabled", false);
 
   const removePlayer = (name) => {
     setPlayers(players => players.filter(player => player.name !== name));
@@ -59,6 +52,10 @@ function App() {
       }
     };
     setIsEditEnabled(false);
+  }
+
+  function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
   }
 
   const generateMatches = () => {
