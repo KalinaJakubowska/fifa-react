@@ -6,9 +6,15 @@
     border-bottom: 2px solid hsla(239, 94%, 9%, 0.8);
     margin: 0;
     min-height: 60px;
+    cursor: pointer;
 }
 
 .match:hover {
+    background-color: hsl(239, 94%, 15%);
+}
+
+.match--selected {
+    cursor: unset;
     background-color: hsl(239, 94%, 15%);
 }
 
