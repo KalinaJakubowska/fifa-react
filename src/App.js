@@ -24,7 +24,7 @@ function App() {
   const [matches, setMatches] = useStateItem("matches", "");
   const [isGameStarted, setIsGameStarted] = useStateItem("isGameStarted", false);
   const [playersStats, setPlayersStats] = useStateItem("playersStats", []);
-  const [isEditEnabled, setIsEditEnabled] = useStateItem("isEditEnabled", false);
+  // const [isEditEnabled, setIsEditEnabled] = useStateItem("isEditEnabled", false);
 
   const removePlayer = (name) => {
     setPlayers(players => players.filter(player => player.name !== name));
@@ -40,19 +40,19 @@ function App() {
     ])
   };
 
-  const copyMatches = (matchesTemplate) => {
-    for (let matchT of matchesTemplate) {
-      for (let match of matches) {
-        const { goal1, goal2, player1, player2 } = match;
-        if ((matchT.player1 === player1 && matchT.player2 === player2) ||
-          (matchT.player1 === player2 && matchT.player2 === player1)) {
-          matchT.goal1 = goal1;
-          matchT.goal2 = goal2;
-        }
-      }
-    };
-    setIsEditEnabled(false);
-  }
+  // const copyMatches = (matchesTemplate) => {
+  //   for (let matchT of matchesTemplate) {
+  //     for (let match of matches) {
+  //       const { goal1, goal2, player1, player2 } = match;
+  //       if ((matchT.player1 === player1 && matchT.player2 === player2) ||
+  //         (matchT.player1 === player2 && matchT.player2 === player1)) {
+  //         matchT.goal1 = goal1;
+  //         matchT.goal2 = goal2;
+  //       }
+  //     }
+  //   };
+  //   setIsEditEnabled(false);
+  // }
 
   function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -100,13 +100,15 @@ function App() {
         });
       }
     }
-    if (isEditEnabled) {
-      copyMatches(matchesTemplate);
-    }
+    // if (isEditEnabled) {
+    //   copyMatches(matchesTemplate);
+    // }
     setMatches(matchesTemplate);
   };
 
-  if (!isGameStarted || isEditEnabled) {
+  if (!isGameStarted 
+    // || isEditEnabled
+    ) {
     return (
       <div>
         <Settings
@@ -130,7 +132,8 @@ function App() {
           playersStats={playersStats}
           setPlayersStats={setPlayersStats}
           setIsGameStarted={setIsGameStarted}
-          setIsEditEnabled={setIsEditEnabled} />
+          // setIsEditEnabled={setIsEditEnabled} 
+          />
       </div>
     )
   }

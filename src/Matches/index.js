@@ -4,7 +4,14 @@ import ResultsTable from "./ResultsTable";
 import { Button } from "./../styledButtons.js";
 import "./style.css";
 
-const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, setIsGameStarted, setIsEditEnabled }) => {
+const Matches = ({ matches,
+    setMatches,
+    players,
+    playersStats,
+    setPlayersStats,
+    setIsGameStarted,
+    // setIsEditEnabled 
+}) => {
     const [selectedMatch, setSelectedMatch] = useState(0);
 
     useEffect(() => {
@@ -81,9 +88,9 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
         ).reverse());
     }
 
-    const onEditButtonClick = () => {
-        setIsEditEnabled(true);
-    }
+    // const onEditButtonClick = () => {
+    //     setIsEditEnabled(true);
+    // }
 
     const onResetButtonClick = () => {
         setIsGameStarted(false);
@@ -92,11 +99,11 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
     return (
         <>
             <div className="matches__container matches__container--buttons">
-                <Button
+                {/* <Button
                     onClick={onEditButtonClick}
                 >
                     Edytuj graczy bez resetu
-                </Button>
+                </Button> */}
                 <Button
                     onClick={onResetButtonClick}
                 >
