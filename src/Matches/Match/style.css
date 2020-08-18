@@ -61,6 +61,15 @@
     text-align: center;
 }
 
+.match__input::-webkit-outer-spin-button, .match__input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.match__input[type=number] {
+    -moz-appearance: textfield;
+}
+
 @media (max-width: 550px) {
     .match__input {
         max-width: 42px;
