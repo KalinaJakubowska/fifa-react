@@ -39,7 +39,7 @@ const Matches = ({ matches,
 
         for (const match of matches) {
             const { goal1, goal2, player1, player2 } = match;
-            if (goal1 && goal2) {
+            if (goal1!=="" && goal2!=="") {
                 for (const playerStatsTemplate of playersStatsTemplate) {
                     if (player1 === playerStatsTemplate.name) {
                         playerStatsTemplate.goalsScored += goal1;
