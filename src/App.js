@@ -55,20 +55,25 @@ function App() {
   // }
 
   function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
+    for (let i = array.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
   }
 
   const generateMatches = () => {
     let matchesTemplate = [];
-    const gameSize = players.length;
+    const playersTemplate = shuffle(players);
+    const gameSize = playersTemplate.length;
 
     //first double queue, in two loops because of sorting (we don't want [ab, bc, cd] etc.)
     for (let i = 0; i < 2; i++) {
       for (let a = i; a < gameSize; a = a + 2) {
         matchesTemplate.push({
           id: matchesTemplate.length,
-          player1: players[a].name,
-          player2: players[(a + 1) % gameSize].name,
+          player1: playersTemplate[a].name,
+          player2: playersTemplate[(a + 1) % gameSize].name,
           goal1: "",
           goal2: "",
         });
@@ -80,8 +85,8 @@ function App() {
       for (let y = 0; y < gameSize; y++) {
         matchesTemplate.push({
           id: matchesTemplate.length,
-          player1: players[y].name,
-          player2: players[(y + i + 1) % gameSize].name,
+          player1: playersTemplate[y].name,
+          player2: playersTemplate[(y + i + 1) % gameSize].name,
           goal1: "",
           goal2: "",
         });
@@ -93,8 +98,8 @@ function App() {
       for (let i = 0; i < gameSize / 2; i++) {
         matchesTemplate.push({
           id: matchesTemplate.length,
-          player1: players[i].name,
-          player2: players[(i + gameSize / 2) % gameSize].name,
+          player1: playersTemplate[i].name,
+          player2: playersTemplate[(i + gameSize / 2) % gameSize].name,
           goal1: "",
           goal2: "",
         });
@@ -106,9 +111,9 @@ function App() {
     setMatches(matchesTemplate);
   };
 
-  if (!isGameStarted 
+  if (!isGameStarted
     // || isEditEnabled
-    ) {
+  ) {
     return (
       <div>
         <Settings
@@ -132,8 +137,8 @@ function App() {
           playersStats={playersStats}
           setPlayersStats={setPlayersStats}
           setIsGameStarted={setIsGameStarted}
-          // setIsEditEnabled={setIsEditEnabled} 
-          />
+        // setIsEditEnabled={setIsEditEnabled} 
+        />
       </div>
     )
   }
