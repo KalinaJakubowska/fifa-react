@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Match from "./Match";
 import ResultsTable from "./ResultsTable";
+import { Button } from "./../styledButtons.js";
 import "./style.css";
 
 const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, setIsGameStarted, setIsEditEnabled }) => {
@@ -91,18 +92,16 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
     return (
         <>
             <div className="matches__container matches__container--buttons">
-                <button
+                <Button
                     onClick={onEditButtonClick}
-                    className="buttons__button"
                 >
                     Edytuj graczy bez resetu
-                </button>
-                <button
+                </Button>
+                <Button
                     onClick={onResetButtonClick}
-                    className="buttons__button"
                 >
                     Zresetuj turniej!
-                </button>
+                </Button>
             </div>
             <div className="matches__container">
                 <div className="matches__box">

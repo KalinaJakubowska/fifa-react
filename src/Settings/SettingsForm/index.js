@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {Button} from "./../../styledButtons.js";
 import "./style.css"
 
 const SettingsForm = ({ addNewPlayer }) => {
@@ -24,7 +25,7 @@ const SettingsForm = ({ addNewPlayer }) => {
                 maxLength="20"
                 
             />
-            <button className="buttons__button">Dodaj nowego gracza</button>
+            <Button>Dodaj nowego gracza</Button>
         </form>
     );
 };

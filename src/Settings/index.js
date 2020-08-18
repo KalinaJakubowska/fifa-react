@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css"
 import SettingsForm from "./SettingsForm";
 import SettingsPlayers from "./SettingsPlayers";
+import { CenteredButton } from "./../styledButtons.js";
 
 const Settings = ({ players, addNewPlayer, removePlayer, generateMatches, setIsGameStarted }) => {
 
@@ -24,13 +25,12 @@ const Settings = ({ players, addNewPlayer, removePlayer, generateMatches, setIsG
         removePlayer={removePlayer}
       />
 
-      <button
+      <CenteredButton
         onClick={onStartButtonClick}
         disabled={players.length < 3}
-        className="buttons__button buttons__button--center"
       >
         Rozpocznij turniej!
-      </button>
+      </CenteredButton>
     </div>
   );
 }
