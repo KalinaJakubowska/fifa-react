@@ -24,6 +24,7 @@ function App() {
   const [matches, setMatches] = useStateItem("matches", "");
   const [isGameStarted, setIsGameStarted] = useStateItem("isGameStarted", false);
   const [playersStats, setPlayersStats] = useStateItem("playersStats", []);
+  const [gameMode, setGameMode] = useStateItem("gameMode", "single");
   // const [isEditEnabled, setIsEditEnabled] = useStateItem("isEditEnabled", false);
 
   const removePlayer = (name) => {
@@ -62,10 +63,10 @@ function App() {
     return array;
   }
 
-  const generateMatches = () => {
+  const generateMatches = (mode) => {
     let matchesTemplate = [];
-    const playersTemplate = shuffle(players);
-    const gameSize = playersTemplate.length;
+    const playersTemplate = shuffle([...players]);
+    let gameSize = playersTemplate.length;
 
     //first double queue, in two loops because of sorting (we don't want [ab, bc, cd] etc.)
     for (let i = 0; i < 2; i++) {
@@ -108,7 +109,67 @@ function App() {
     // if (isEditEnabled) {
     //   copyMatches(matchesTemplate);
     // }
+
+
+    if (mode === "volta") {
+      gameSize = matchesTemplate.length;
+      const playersDoubleTemplate = matchesTemplate.map(({ player1, player2 }) => [player1, player2]);
+      matchesTemplate = [];
+      for (let i = 0; i < 2; i++) {
+        for (let a = i; a < gameSize; a = a + 2) {
+          matchesTemplate.push({
+            id: matchesTemplate.length,
+            player1: playersDoubleTemplate[a][0],
+            player2: playersDoubleTemplate[a][1],
+            player3: playersDoubleTemplate[(a + 1) % gameSize][0],
+            player4: playersDoubleTemplate[(a + 1) % gameSize][1],
+            goal1: "",
+            goal2: "",
+          });
+        }
+      }
+
+      //all double middle queues
+      for (let i = 1; i < Math.floor((gameSize - 1) / 2); i++) {
+        for (let y = 0; y < gameSize; y++) {
+          matchesTemplate.push({
+            id: matchesTemplate.length,
+            player1: playersDoubleTemplate[y][0],
+            player2: playersDoubleTemplate[y][1],
+            player3: playersDoubleTemplate[(y + i + 1) % gameSize][0],
+            player4: playersDoubleTemplate[(y + i + 1) % gameSize][1],
+            goal1: "",
+            goal2: "",
+          });
+        }
+      }
+
+      //last single or double queue, depends on even or odd players number
+      if ((gameSize % 2) === 0) {
+        for (let i = 0; i < gameSize / 2; i++) {
+          matchesTemplate.push({
+            id: matchesTemplate.length,
+            player1: playersDoubleTemplate[i][0],
+            player2: playersDoubleTemplate[i][1],
+            player3: playersDoubleTemplate[(i + gameSize / 2) % gameSize][0],
+            player4: playersDoubleTemplate[(i + gameSize / 2) % gameSize][1],
+            goal1: "",
+            goal2: "",
+          });
+        }
+      }
+
+      matchesTemplate = matchesTemplate.filter(match => !(match.player1 === match.player3
+        || match.player1 === match.player4
+        || match.player2 === match.player3
+        || match.player2 === match.player4
+      ));
+
+      let counter = 0;
+      matchesTemplate = matchesTemplate.map(match => ({ ...match, id: counter++ }));
+    }
     setMatches(matchesTemplate);
+    console.log(matchesTemplate);
   };
 
   if (!isGameStarted
@@ -123,6 +184,7 @@ function App() {
           isGameStarted={isGameStarted}
           setIsGameStarted={setIsGameStarted}
           generateMatches={generateMatches}
+          setGameMode={setGameMode}
         />
       </div>
     )
@@ -137,7 +199,7 @@ function App() {
           playersStats={playersStats}
           setPlayersStats={setPlayersStats}
           setIsGameStarted={setIsGameStarted}
-        // setIsEditEnabled={setIsEditEnabled} 
+        //setIsEditEnabled={setIsEditEnabled}
         />
       </div>
     )

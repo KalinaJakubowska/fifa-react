@@ -4,11 +4,25 @@ import SettingsForm from "./SettingsForm";
 import SettingsPlayers from "./SettingsPlayers";
 import { CenteredButton } from "./../styledButtons.js";
 
-const Settings = ({ players, addNewPlayer, removePlayer, generateMatches, setIsGameStarted }) => {
+const Settings = ({
+  players,
+  addNewPlayer,
+  removePlayer,
+  generateMatches,
+  setIsGameStarted,
+  setGameMode
+}) => {
 
-  const onStartButtonClick = () => {
-    generateMatches();
+  const onStartButtonClickSingle = () => {
+    generateMatches("single");
     setIsGameStarted(true);
+    setGameMode("single");
+  }
+
+  const onStartButtonClickVolta = () => {
+    generateMatches("volta");
+    setIsGameStarted(true);
+    setGameMode("volta")
   }
 
   return (
@@ -26,10 +40,16 @@ const Settings = ({ players, addNewPlayer, removePlayer, generateMatches, setIsG
       />
 
       <CenteredButton
-        onClick={onStartButtonClick}
+        onClick={onStartButtonClickSingle}
         disabled={players.length < 3}
       >
-        Rozpocznij turniej!
+        Rozpocznij turniej single!
+      </CenteredButton>
+      <CenteredButton
+        onClick={onStartButtonClickVolta}
+        disabled={players.length < 3}
+      >
+        Rozpocznij turniej Volta!
       </CenteredButton>
     </div>
   );
