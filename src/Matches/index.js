@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import ResetButton from "./ResetButton";
-import EditPlayersButton from "./EditPlayersButton";
 import Match from "./Match";
 import ResultsTable from "./ResultsTable";
 import "./style.css";
@@ -82,11 +80,29 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
         ).reverse());
     }
 
+    const onEditButtonClick = () => {
+        setIsEditEnabled(true);
+    }
+
+    const onResetButtonClick = () => {
+        setIsGameStarted(false);
+    }
+
     return (
         <>
             <div className="matches__container matches__container--buttons">
-                <EditPlayersButton setIsEditEnabled={setIsEditEnabled} />
-                <ResetButton setIsGameStarted={setIsGameStarted} />
+                <button
+                    onClick={onEditButtonClick}
+                    className="buttons__button"
+                >
+                    Edytuj graczy bez resetu
+                </button>
+                <button
+                    onClick={onResetButtonClick}
+                    className="buttons__button"
+                >
+                    Zresetuj turniej!
+                </button>
             </div>
             <div className="matches__container">
                 <div className="matches__box">
