@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "3efd37ba83914f7be825140ea5ac751e",
+    "revision": "91b8d90454a3362a5fcb9bea4fc7338d",
     "url": "/fifa-react/index.html"
   },
   {
-    "revision": "2dd4059df5f56f9fcbc8",
+    "revision": "ae720de9e4d6164db1d6",
     "url": "/fifa-react/static/css/main.2f65199b.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/fifa-react/static/js/2.3051e7b2.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2dd4059df5f56f9fcbc8",
-    "url": "/fifa-react/static/js/main.041ba140.chunk.js"
+    "revision": "ae720de9e4d6164db1d6",
+    "url": "/fifa-react/static/js/main.6555cd68.chunk.js"
   },
   {
     "revision": "8965312fc81f7aad811f",
