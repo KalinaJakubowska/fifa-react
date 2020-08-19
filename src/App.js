@@ -168,7 +168,6 @@ function App() {
       matchesTemplate = matchesTemplate.map(match => ({ ...match, id: counter++ }));
     }
     setMatches(matchesTemplate);
-    console.log(matchesTemplate);
   };
 
   if (!isGameStarted

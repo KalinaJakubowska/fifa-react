@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Match from "./Match";
 import ResultsTable from "./ResultsTable";
 import { Button } from "./../styledButtons.js";
+import { ButtonsContainer, Container } from "./styledContainer.js";
 import "./style.css";
 
 const Matches = ({ matches,
@@ -140,19 +141,19 @@ const Matches = ({ matches,
 
     return (
         <>
-            <div className="matches__container matches__container--buttons">
-                {/* <Button
-                    onClick={onEditButtonClick}
+            <ButtonsContainer>
+                <Button
+                    // onClick={onEditButtonClick}
                 >
                     Edytuj graczy bez resetu
-                </Button> */}
+                </Button>
                 <Button
                     onClick={onResetButtonClick}
                 >
                     Zresetuj turniej!
                 </Button>
-            </div>
-            <div className="matches__container">
+            </ButtonsContainer>
+            <Container>
                 <div className="matches__box">
                     <div className="matches__matchesList">
                         {matches && matches.map(match =>
@@ -171,7 +172,7 @@ const Matches = ({ matches,
                 <div className="matches__box">
                     <ResultsTable playersStats={playersStats} />
                 </div>
-            </div>
+            </Container>
         </>
     )
 }
