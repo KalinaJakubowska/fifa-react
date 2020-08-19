@@ -1,29 +1,58 @@
 import React from "react";
-import "./style.css"
 import SettingsForm from "./SettingsForm";
 import SettingsPlayers from "./SettingsPlayers";
-import SettingsStartButton from "./SettingsStartButton";
+import { CenteredButton } from "./../styledButtons.js";
+import { HeaderContainer, SettingsContainer, SettingsHeader } from "./styled.js";
 
-const Settings = ({ players, addNewPlayer, removePlayer, generateMatches, setIsGameStarted }) => (
-  <div className="settings">
-    <div className="settings__container">
-      <h2 className="settings__header">Lista graczy:</h2>
-    </div>
-    <SettingsForm
-      addNewPlayer={addNewPlayer}
-    />
+const Settings = ({
+  players,
+  addNewPlayer,
+  removePlayer,
+  generateMatches,
+  setIsGameStarted,
+  setGameMode
+}) => {
 
-    <SettingsPlayers
-      players={players}
-      removePlayer={removePlayer}
-    />
+  const onStartButtonClickSingle = () => {
+    generateMatches("single");
+    setIsGameStarted(true);
+    setGameMode("single");
+  }
 
-    <SettingsStartButton
-      players={players}
-      generateMatches={generateMatches}
-      setIsGameStarted={setIsGameStarted}
-    />
-  </div>
-);
+  const onStartButtonClickVolta = () => {
+    generateMatches("volta");
+    setIsGameStarted(true);
+    setGameMode("volta")
+  }
+
+  return (
+    <SettingsContainer>
+      <HeaderContainer>
+        <SettingsHeader>Lista graczy:</SettingsHeader>
+      </HeaderContainer>
+      <SettingsForm
+        addNewPlayer={addNewPlayer}
+      />
+
+      <SettingsPlayers
+        players={players}
+        removePlayer={removePlayer}
+      />
+
+      <CenteredButton
+        onClick={onStartButtonClickSingle}
+        disabled={players.length < 3}
+      >
+        Rozpocznij turniej single!
+      </CenteredButton>
+      <CenteredButton
+        onClick={onStartButtonClickVolta}
+        disabled={players.length < 3}
+      >
+        Rozpocznij turniej Volta!
+      </CenteredButton>
+    </SettingsContainer>
+  );
+}
 
 export default Settings;

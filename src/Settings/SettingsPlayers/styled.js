@@ -1,22 +1,21 @@
-.settingsPlayers {
+import styled from "styled-components";
+import trashBin from "./delete.png";
+export const Players = styled.ul`
     margin: 20px;
     padding: 0 0 20px;
-}
-
-.settingsPlayers__item {
+`
+export const PlayerBox = styled.li`
     display: grid;
     grid-template-columns: 1fr auto;
     border-bottom: 2px solid hsla(239, 94%, 9%, 0.8);
     margin: 0 auto;
-}
-
-.settingsPlayers__task {
+`
+export const PlayerName = styled.span`
     margin: auto 0;
-}
-
-.settingsPlayers__button {
+`
+export const RemovePlayerButton = styled.button`
     background-color: hsl(0, 100%, 40%);
-    background-image: url("./delete.png");
+    background-image: url(${trashBin});
     background-position: cover;
     width: 40px;
     height: 40px;
@@ -24,8 +23,7 @@
     background-size: cover;
     border: none;
     transition: 0.25s;
-}
 
-.settingsPlayers__button:hover {
+    &:hover {
     background-color: hsl(0, 100%, 45%);
-}
+}`

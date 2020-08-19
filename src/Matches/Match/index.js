@@ -1,7 +1,22 @@
 import React from "react";
-import "./style.css";
+import { MatchInput } from "./../../styledInput.js"
+import {
+    MatchFirstPlayer,
+    MatchSecondPlayer,
+    MatchGoal,
+    MatchVS,
+    MatchBox
+} from "./styled.js"
 
-const Match = ({ selectedMatch, setSelectedMatch, id, match, matches, setMatches }) => {
+const Match = ({
+    selectedMatch,
+    setSelectedMatch,
+    id,
+    match,
+    matches,
+    setMatches,
+    gameMode
+}) => {
     const onChange1 = ({ target }) => {
         setMatches(matches => matches.map(theMatch => {
             if (theMatch.id === id) {
@@ -25,18 +40,51 @@ const Match = ({ selectedMatch, setSelectedMatch, id, match, matches, setMatches
     }
 
     return (
-        <div onClick={onMatchClick} className={`match${selectedMatch === id ? " match--selected" : ""}`}>
-            <div className="match__item match__item--player">{matches[id].player1}</div>
-            <div className="match__item match__item--goal">
-                {selectedMatch === id ? <input className="match__input" value={match.goal1} onChange={onChange1} /> : match.goal1}
+        <MatchBox
+            onClick={onMatchClick}
+            selected={selectedMatch === id}
+        >
+            <div>
+                <MatchFirstPlayer>
+                    {matches[id].player1}
+                </MatchFirstPlayer>
+                {gameMode === "volta" &&
+                    <MatchFirstPlayer>
+                        {matches[id].player3}
+                    </MatchFirstPlayer>
+                }
+            </div>
+            <MatchGoal>
+                {selectedMatch === id
+                    ? <MatchInput
+                        type="number"
+                        value={match.goal1}
+                        onChange={onChange1}
+                    />
+                    : match.goal1}
 
+            </MatchGoal>
+            <MatchVS>VS</MatchVS>
+            <MatchGoal>
+                {selectedMatch === id
+                    ? <MatchInput
+                        type="number"
+                        value={match.goal2}
+                        onChange={onChange2}
+                    />
+                    : match.goal2}
+            </MatchGoal>
+            <div>
+                <MatchSecondPlayer>
+                    {matches[id].player2}
+                </MatchSecondPlayer>
+                {gameMode === "volta" &&
+                    <MatchSecondPlayer>
+                        {matches[id].player4}
+                    </MatchSecondPlayer>
+                }
             </div>
-            <div className="match__item match__item--vs">VS</div>
-            <div className="match__item match__item--goal">
-                {selectedMatch === id ? <input className="match__input" value={match.goal2} onChange={onChange2} /> : match.goal2}
-            </div>
-            <div className="match__item match__item--secondPlayer">{matches[id].player2}</div>
-        </div>
+        </MatchBox>
     )
 }
 

@@ -1,4 +1,6 @@
-.matches__container {
+import styled from "styled-components";
+
+export const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
@@ -9,30 +11,27 @@
     border: 2px solid hsl(239, 94%, 9%);
     border-radius: 4px;
     box-shadow: 0 0 5px 2px hsl(239, 94%, 11%);
-}
 
-@media (max-width: 767px) {
-    .matches__container {
+    @media(max-width: 767px) {
         grid-template-columns: 1fr;
         padding: 10px;
     }
-}
+`
 
-.matches__container--buttons {
+export const ButtonsContainer = styled(Container)`
     max-width: 500px;
     padding: 5px;
-}
+`
 
-.matches__matchesList {
-    background-color: hsl(239, 94%, 13%);
-    margin: 0 auto;
+export const MatchesList = styled.div`
     box-shadow: 0 0 5px 2px hsl(239, 94%, 11%);
     max-height: 550px;
     overflow-y: auto;
-}
 
-@media (max-width: 767px) {
-    .matches__matchesList {
+    @media(max-width: 767px) {
         max-height: 300px;
-    }
-}
+}`
+
+
+
+

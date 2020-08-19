@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
-import ResetButton from "./ResetButton";
-import EditPlayersButton from "./EditPlayersButton";
 import Match from "./Match";
 import ResultsTable from "./ResultsTable";
-import "./style.css";
+import { Button } from "./../styledButtons.js";
+import { ButtonsContainer, Container, MatchesList } from "./styled";
 
-const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, setIsGameStarted, setIsEditEnabled }) => {
+const Matches = ({ matches,
+    setMatches,
+    players,
+    playersStats,
+    setPlayersStats,
+    setIsGameStarted,
+    // setIsEditEnabled,
+    gameMode,
+}) => {
     const [selectedMatch, setSelectedMatch] = useState(0);
 
     useEffect(() => {
@@ -33,7 +40,8 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
 
         for (const match of matches) {
             const { goal1, goal2, player1, player2 } = match;
-            if (goal1 && goal2) {
+
+            if (goal1 !== "" && goal2 !== "") {
                 for (const playerStatsTemplate of playersStatsTemplate) {
                     if (player1 === playerStatsTemplate.name) {
                         playerStatsTemplate.goalsScored += goal1;
@@ -70,6 +78,46 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
                         playerStatsTemplate.matches =
                             playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
                     }
+
+                    if (gameMode === "volta") {
+                        const { player3, player4 } = match;
+                        if (player3 === playerStatsTemplate.name) {
+                            playerStatsTemplate.goalsScored += goal1;
+                            playerStatsTemplate.goalsConceded += goal2;
+                            if (goal1 > goal2) {
+                                playerStatsTemplate.wins += 1;
+                            }
+                            else if (goal1 < goal2) {
+                                playerStatsTemplate.losses += 1;
+                            }
+                            else if (goal1 === goal2) {
+                                playerStatsTemplate.draws += 1;
+                            }
+                            playerStatsTemplate.points =
+                                playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
+                            playerStatsTemplate.matches =
+                                playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
+                        }
+
+                        if (player4 === playerStatsTemplate.name) {
+                            playerStatsTemplate.goalsScored += goal2;
+                            playerStatsTemplate.goalsConceded += goal1;
+                            if (goal2 > goal1) {
+                                playerStatsTemplate.wins += 1;
+                            }
+                            else if (goal2 < goal1) {
+                                playerStatsTemplate.losses += 1;
+                            }
+                            else if (goal1 === goal2) {
+                                playerStatsTemplate.draws += 1;
+                            }
+                            playerStatsTemplate.points =
+                                playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
+                            playerStatsTemplate.matches =
+                                playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
+                        }
+
+                    }
                 }
             }
         }
@@ -82,15 +130,30 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
         ).reverse());
     }
 
+    // const onEditButtonClick = () => {
+    //     setIsEditEnabled(true);
+    // }
+
+    const onResetButtonClick = () => {
+        setIsGameStarted(false);
+    }
+
     return (
         <>
-            <div className="matches__container matches__container--buttons">
-                <EditPlayersButton setIsEditEnabled={setIsEditEnabled} />
-                <ResetButton setIsGameStarted={setIsGameStarted} />
-            </div>
-            <div className="matches__container">
-                <div className="matches__box">
-                    <div className="matches__matchesList">
+            <ButtonsContainer>
+                <Button
+                    // onClick={onEditButtonClick}
+                >
+                    Edytuj graczy bez resetu
+                </Button>
+                <Button
+                    onClick={onResetButtonClick}
+                >
+                    Zresetuj turniej!
+                </Button>
+            </ButtonsContainer>
+            <Container>
+                    <MatchesList>
                         {matches && matches.map(match =>
                             <Match
                                 key={match.id}
@@ -99,14 +162,12 @@ const Matches = ({ matches, setMatches, players, playersStats, setPlayersStats, 
                                 id={match.id} match={match}
                                 matches={matches}
                                 setMatches={setMatches}
+                                gameMode={gameMode}
                             />
                         )}
-                    </div>
-                </div>
-                <div className="matches__box">
+                    </MatchesList>
                     <ResultsTable playersStats={playersStats} />
-                </div>
-            </div>
+            </Container>
         </>
     )
 }
