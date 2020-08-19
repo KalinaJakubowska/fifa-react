@@ -1,4 +1,6 @@
-.buttons__button {
+import styled from "styled-components";
+
+export const Button = styled.button`
     display: block;
     color: #fff;
     background-color: hsl(201, 100%, 36%);
@@ -7,22 +9,22 @@
     border-radius: 4px;
     transition: 0.3s;
     height: 45px;
-}
+    cursor: pointer;
 
-.buttons__button:hover {
+    &:hover {
     background-color: hsl(201, 100%, 43%);
-}
-
-.buttons__button:active {
+    }
+    &:active {
     background-color: hsl(201, 100%, 50%);
-}
-
-.buttons__button:disabled {
+    }
+    &:disabled {
     color: #ccc;
     transform: none;
     background-color: hsl(201, 30%, 36%);
-}
-
-.buttons__button--center{
+    }
+`
+export const CenteredButton = styled(Button)`
     margin: 0 auto;
-}
+`
+
+
