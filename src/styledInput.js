@@ -5,6 +5,7 @@ export const Input = styled.input`
     height: 45px;
     background-color: hsl(239, 94%, 25%);
     border: 2px solid hsla(239, 94%, 9%, 0.8);
+    box-shadow: 0 0 2px 1px hsl(239, 94%, 11%);
     color: #fff;
 
     &::placeholder {
