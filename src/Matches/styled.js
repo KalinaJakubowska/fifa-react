@@ -23,4 +23,16 @@ export const ButtonsContainer = styled(Container)`
     padding: 5px;
 `
 
+export const MatchesList = styled.div`
+    margin: 0 auto;
+    box-shadow: 0 0 5px 2px hsl(239, 94%, 11%);
+    max-height: 550px;
+    overflow-y: auto;
+
+    @media(max-width: 767px) {
+        max-height: 300px;
+}`
+
+
+
 
