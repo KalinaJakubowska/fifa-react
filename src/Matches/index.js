@@ -141,7 +141,7 @@ const Matches = ({ matches,
     return (
         <>
             <ButtonsContainer>
-                <Button
+                <Button disabled
                     // onClick={onEditButtonClick}
                 >
                     Edytuj graczy bez resetu
