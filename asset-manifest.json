@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/fifa-react/static/css/main.da005e34.chunk.css",
-    "main.js": "/fifa-react/static/js/main.903e3f0e.chunk.js",
-    "main.js.map": "/fifa-react/static/js/main.903e3f0e.chunk.js.map",
+    "main.css": "/fifa-react/static/css/main.2f65199b.chunk.css",
+    "main.js": "/fifa-react/static/js/main.041ba140.chunk.js",
+    "main.js.map": "/fifa-react/static/js/main.041ba140.chunk.js.map",
     "runtime-main.js": "/fifa-react/static/js/runtime-main.19f16db8.js",
     "runtime-main.js.map": "/fifa-react/static/js/runtime-main.19f16db8.js.map",
-    "static/js/2.f02cef4a.chunk.js": "/fifa-react/static/js/2.f02cef4a.chunk.js",
-    "static/js/2.f02cef4a.chunk.js.map": "/fifa-react/static/js/2.f02cef4a.chunk.js.map",
+    "static/js/2.3051e7b2.chunk.js": "/fifa-react/static/js/2.3051e7b2.chunk.js",
+    "static/js/2.3051e7b2.chunk.js.map": "/fifa-react/static/js/2.3051e7b2.chunk.js.map",
     "index.html": "/fifa-react/index.html",
-    "precache-manifest.646afc5c54fecee61c9da9d0a7a2fb0f.js": "/fifa-react/precache-manifest.646afc5c54fecee61c9da9d0a7a2fb0f.js",
+    "precache-manifest.f10f7fdacc24cd9196b6b72f2e245567.js": "/fifa-react/precache-manifest.f10f7fdacc24cd9196b6b72f2e245567.js",
     "service-worker.js": "/fifa-react/service-worker.js",
-    "static/css/main.da005e34.chunk.css.map": "/fifa-react/static/css/main.da005e34.chunk.css.map",
-    "static/js/2.f02cef4a.chunk.js.LICENSE.txt": "/fifa-react/static/js/2.f02cef4a.chunk.js.LICENSE.txt",
+    "static/css/main.2f65199b.chunk.css.map": "/fifa-react/static/css/main.2f65199b.chunk.css.map",
+    "static/js/2.3051e7b2.chunk.js.LICENSE.txt": "/fifa-react/static/js/2.3051e7b2.chunk.js.LICENSE.txt",
     "static/media/index.css": "/fifa-react/static/media/background.50ab2c6a.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.19f16db8.js",
-    "static/js/2.f02cef4a.chunk.js",
-    "static/css/main.da005e34.chunk.css",
-    "static/js/main.903e3f0e.chunk.js"
+    "static/js/2.3051e7b2.chunk.js",
+    "static/css/main.2f65199b.chunk.css",
+    "static/js/main.041ba140.chunk.js"
   ]
 }
