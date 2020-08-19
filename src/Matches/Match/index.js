@@ -1,6 +1,12 @@
 import React from "react";
-import "./style.css";
 import { MatchInput } from "./../../styledInput.js"
+import {
+    MatchFirstPlayer,
+    MatchSecondPlayer,
+    MatchGoal,
+    MatchVS,
+    MatchBox
+} from "./styled.js"
 
 const Match = ({
     selectedMatch,
@@ -34,21 +40,21 @@ const Match = ({
     }
 
     return (
-        <div
+        <MatchBox
             onClick={onMatchClick}
-            className={`match${selectedMatch === id ? " match--selected" : ""}`}
+            selected={selectedMatch === id}
         >
             <div>
-                <div className="match__item match__item--player">
+                <MatchFirstPlayer>
                     {matches[id].player1}
-                </div>
+                </MatchFirstPlayer>
                 {gameMode === "volta" &&
-                    <div className="match__item match__item--player">
+                    <MatchFirstPlayer>
                         {matches[id].player3}
-                    </div>
+                    </MatchFirstPlayer>
                 }
             </div>
-            <div className="match__item match__item--goal">
+            <MatchGoal>
                 {selectedMatch === id
                     ? <MatchInput
                         type="number"
@@ -57,9 +63,9 @@ const Match = ({
                     />
                     : match.goal1}
 
-            </div>
-            <div className="match__item match__item--vs">VS</div>
-            <div className="match__item match__item--goal">
+            </MatchGoal>
+            <MatchVS>VS</MatchVS>
+            <MatchGoal>
                 {selectedMatch === id
                     ? <MatchInput
                         type="number"
@@ -67,18 +73,18 @@ const Match = ({
                         onChange={onChange2}
                     />
                     : match.goal2}
-            </div>
+            </MatchGoal>
             <div>
-                <div className="match__item match__item--player">
+                <MatchSecondPlayer>
                     {matches[id].player2}
-                </div>
+                </MatchSecondPlayer>
                 {gameMode === "volta" &&
-                    <div className="match__item match__item--player">
+                    <MatchSecondPlayer>
                         {matches[id].player4}
-                    </div>
+                    </MatchSecondPlayer>
                 }
             </div>
-        </div>
+        </MatchBox>
     )
 }
 
