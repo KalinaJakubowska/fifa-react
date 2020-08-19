@@ -25,6 +25,7 @@ export const ButtonsContainer = styled(Container)`
 
 export const MatchesList = styled.div`
     box-shadow: 0 0 5px 2px hsl(239, 94%, 11%);
+    background-color: hsl(239,94%,13%);
     max-height: 550px;
     overflow-y: auto;
 
