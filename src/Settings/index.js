@@ -1,8 +1,8 @@
 import React from "react";
-import "./style.css"
 import SettingsForm from "./SettingsForm";
 import SettingsPlayers from "./SettingsPlayers";
 import { CenteredButton } from "./../styledButtons.js";
+import { HeaderContainer, SettingsContainer, SettingsHeader } from "./styled.js";
 
 const Settings = ({
   players,
@@ -26,10 +26,10 @@ const Settings = ({
   }
 
   return (
-    <div className="settings">
-      <div className="settings__container">
-        <h2 className="settings__header">Lista graczy:</h2>
-      </div>
+    <SettingsContainer>
+      <HeaderContainer>
+        <SettingsHeader>Lista graczy:</SettingsHeader>
+      </HeaderContainer>
       <SettingsForm
         addNewPlayer={addNewPlayer}
       />
@@ -51,7 +51,7 @@ const Settings = ({
       >
         Rozpocznij turniej Volta!
       </CenteredButton>
-    </div>
+    </SettingsContainer>
   );
 }
 
