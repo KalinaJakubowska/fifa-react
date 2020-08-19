@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "./../../styledButtons.js";
 import { Input } from "./../../styledInput";
-import "./style.css"
+import { Form } from "./styled.js";
 
 const SettingsForm = ({ addNewPlayer }) => {
 
@@ -16,7 +16,7 @@ const SettingsForm = ({ addNewPlayer }) => {
     }
 
     return (
-        <form className="settingsForm" onSubmit={onFormSubmit}>
+        <Form className="settingsForm" onSubmit={onFormSubmit}>
             <Input
                 value={newTaskContent}
                 autoFocus
@@ -25,7 +25,7 @@ const SettingsForm = ({ addNewPlayer }) => {
                 maxLength="20"
             />
             <Button>Dodaj nowego gracza</Button>
-        </form>
+        </Form>
     );
 };
 
