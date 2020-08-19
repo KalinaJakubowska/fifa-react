@@ -40,43 +40,9 @@
 .match__item--player {
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: left;
 }
 
 .match__item--secondPlayer {
     overflow: hidden;
     text-overflow: ellipsis;
-    text-align: right;
-}
-
-.match__input {
-    display: block;
-    margin: 0 auto;
-    max-width: 53px;
-    padding: 10px;
-    height: 30px;
-    background-color: hsl(239, 94%, 25%);
-    border: 2px solid hsla(239, 94%, 9%, 0.8);
-    color: #fff;
-    font-size: 15px;
-    text-align: center;
-}
-
-.match__input::-webkit-outer-spin-button, .match__input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.match__input[type=number] {
-    -moz-appearance: textfield;
-}
-
-@media (max-width: 550px) {
-    .match__input {
-        max-width: 42px;
-    }
-}
-
-.match__input::placeholder {
-    color: #ccc;
 }

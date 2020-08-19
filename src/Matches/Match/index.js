@@ -1,5 +1,6 @@
 import React from "react";
 import "./style.css";
+import { MatchInput } from "./../../styledInput.js"
 
 const Match = ({
     selectedMatch,
@@ -49,9 +50,8 @@ const Match = ({
             </div>
             <div className="match__item match__item--goal">
                 {selectedMatch === id
-                    ? <input
+                    ? <MatchInput
                         type="number"
-                        className="match__input"
                         value={match.goal1}
                         onChange={onChange1}
                     />
@@ -61,9 +61,8 @@ const Match = ({
             <div className="match__item match__item--vs">VS</div>
             <div className="match__item match__item--goal">
                 {selectedMatch === id
-                    ? <input
+                    ? <MatchInput
                         type="number"
-                        className="match__input"
                         value={match.goal2}
                         onChange={onChange2}
                     />
