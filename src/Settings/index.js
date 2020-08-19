@@ -47,7 +47,7 @@ const Settings = ({
       </CenteredButton>
       <CenteredButton
         onClick={onStartButtonClickVolta}
-        disabled={players.length < 3}
+        disabled={players.length < 4}
       >
         Rozpocznij turniej Volta!
       </CenteredButton>
