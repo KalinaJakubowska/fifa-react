@@ -10,7 +10,8 @@ const Matches = ({ matches,
     playersStats,
     setPlayersStats,
     setIsGameStarted,
-    // setIsEditEnabled 
+    // setIsEditEnabled,
+    gameMode,
 }) => {
     const [selectedMatch, setSelectedMatch] = useState(0);
 
@@ -39,7 +40,8 @@ const Matches = ({ matches,
 
         for (const match of matches) {
             const { goal1, goal2, player1, player2 } = match;
-            if (goal1!=="" && goal2!=="") {
+
+            if (goal1 !== "" && goal2 !== "") {
                 for (const playerStatsTemplate of playersStatsTemplate) {
                     if (player1 === playerStatsTemplate.name) {
                         playerStatsTemplate.goalsScored += goal1;
@@ -75,6 +77,46 @@ const Matches = ({ matches,
                             playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
                         playerStatsTemplate.matches =
                             playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
+                    }
+
+                    if (gameMode === "volta") {
+                        const { player3, player4 } = match;
+                        if (player3 === playerStatsTemplate.name) {
+                            playerStatsTemplate.goalsScored += goal1;
+                            playerStatsTemplate.goalsConceded += goal2;
+                            if (goal1 > goal2) {
+                                playerStatsTemplate.wins += 1;
+                            }
+                            else if (goal1 < goal2) {
+                                playerStatsTemplate.losses += 1;
+                            }
+                            else if (goal1 === goal2) {
+                                playerStatsTemplate.draws += 1;
+                            }
+                            playerStatsTemplate.points =
+                                playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
+                            playerStatsTemplate.matches =
+                                playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
+                        }
+
+                        if (player4 === playerStatsTemplate.name) {
+                            playerStatsTemplate.goalsScored += goal2;
+                            playerStatsTemplate.goalsConceded += goal1;
+                            if (goal2 > goal1) {
+                                playerStatsTemplate.wins += 1;
+                            }
+                            else if (goal2 < goal1) {
+                                playerStatsTemplate.losses += 1;
+                            }
+                            else if (goal1 === goal2) {
+                                playerStatsTemplate.draws += 1;
+                            }
+                            playerStatsTemplate.points =
+                                playerStatsTemplate.wins * 3 + playerStatsTemplate.draws;
+                            playerStatsTemplate.matches =
+                                playerStatsTemplate.wins + playerStatsTemplate.draws + playerStatsTemplate.losses;
+                        }
+
                     }
                 }
             }
@@ -121,6 +163,7 @@ const Matches = ({ matches,
                                 id={match.id} match={match}
                                 matches={matches}
                                 setMatches={setMatches}
+                                gameMode={gameMode}
                             />
                         )}
                     </div>

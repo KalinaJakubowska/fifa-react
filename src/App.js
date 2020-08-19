@@ -110,7 +110,6 @@ function App() {
     //   copyMatches(matchesTemplate);
     // }
 
-
     if (mode === "volta") {
       gameSize = matchesTemplate.length;
       const playersDoubleTemplate = matchesTemplate.map(({ player1, player2 }) => [player1, player2]);
@@ -120,8 +119,8 @@ function App() {
           matchesTemplate.push({
             id: matchesTemplate.length,
             player1: playersDoubleTemplate[a][0],
-            player2: playersDoubleTemplate[a][1],
-            player3: playersDoubleTemplate[(a + 1) % gameSize][0],
+            player3: playersDoubleTemplate[a][1],
+            player2: playersDoubleTemplate[(a + 1) % gameSize][0],
             player4: playersDoubleTemplate[(a + 1) % gameSize][1],
             goal1: "",
             goal2: "",
@@ -135,8 +134,8 @@ function App() {
           matchesTemplate.push({
             id: matchesTemplate.length,
             player1: playersDoubleTemplate[y][0],
-            player2: playersDoubleTemplate[y][1],
-            player3: playersDoubleTemplate[(y + i + 1) % gameSize][0],
+            player3: playersDoubleTemplate[y][1],
+            player2: playersDoubleTemplate[(y + i + 1) % gameSize][0],
             player4: playersDoubleTemplate[(y + i + 1) % gameSize][1],
             goal1: "",
             goal2: "",
@@ -150,8 +149,8 @@ function App() {
           matchesTemplate.push({
             id: matchesTemplate.length,
             player1: playersDoubleTemplate[i][0],
-            player2: playersDoubleTemplate[i][1],
-            player3: playersDoubleTemplate[(i + gameSize / 2) % gameSize][0],
+            player3: playersDoubleTemplate[i][1],
+            player2: playersDoubleTemplate[(i + gameSize / 2) % gameSize][0],
             player4: playersDoubleTemplate[(i + gameSize / 2) % gameSize][1],
             goal1: "",
             goal2: "",
@@ -159,10 +158,10 @@ function App() {
         }
       }
 
-      matchesTemplate = matchesTemplate.filter(match => !(match.player1 === match.player3
+      matchesTemplate = matchesTemplate.filter(match => !(match.player1 === match.player2
         || match.player1 === match.player4
-        || match.player2 === match.player3
-        || match.player2 === match.player4
+        || match.player3 === match.player2
+        || match.player3 === match.player4
       ));
 
       let counter = 0;
@@ -199,7 +198,8 @@ function App() {
           playersStats={playersStats}
           setPlayersStats={setPlayersStats}
           setIsGameStarted={setIsGameStarted}
-        //setIsEditEnabled={setIsEditEnabled}
+          //setIsEditEnabled={setIsEditEnabled}
+          gameMode={gameMode}
         />
       </div>
     )
