@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css"
+import { RemovePlayerButton, PlayerName, PlayerBox, Players } from "./styled";
 
 const SettingsPlayers = ({ players, removePlayer }) => {
     if (!players.length) {
@@ -7,18 +7,20 @@ const SettingsPlayers = ({ players, removePlayer }) => {
     }
 
     return (
-        < ul className="settingsPlayers" >
+        <Players>
             {
                 players.map(({ name }) => (
-                    <li key={name} className="settingsPlayers__item">
-                        <span className="settingsPlayers__task">
+                    <PlayerBox key={name}>
+                        <PlayerName>
                             {name}
-                        </span>
-                        <button className="settingsPlayers__button" onClick={() => removePlayer(name)} />
-                    </li>
+                        </PlayerName>
+                        <RemovePlayerButton
+                        onClick={() => removePlayer(name)}
+                        />
+                    </PlayerBox>
                 ))
             }
-        </ul >
+        </Players>
     )
 };
 
