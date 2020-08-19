@@ -1,20 +1,3 @@
-.resultsTable__container {
-    max-height: 550px;
-    overflow-y: auto;
-    display: flex;
-    justify-content: center;
-}
-
-.resultsTable__table {
-    border-collapse: collapse;
-    text-align: center;
-}
-
-.resultsTable__caption {
-    padding: 5px;
-    font-size: 20px;
-}
-
 .resultsTable__row {
     border-bottom: 1px solid white;
     padding: 10px;

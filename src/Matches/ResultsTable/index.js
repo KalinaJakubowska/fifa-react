@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import {Table, TableContainer, TableCaption} from "./styled";
 import "./style.css"
 
 const ResultsTable = ({ playersStats }) => {
@@ -29,9 +30,9 @@ const ResultsTable = ({ playersStats }) => {
     };
 
     return (
-        <div className="resultsTable__container">
-            <table className="resultsTable__table">
-                <caption className="resultsTable__caption"><b>Tabela wyników</b></caption>
+        <TableContainer>
+            <Table>
+                <TableCaption><b>Tabela wyników</b></TableCaption>
                 <thead>
                     <tr className="resultsTable__headRow">
                         <th className="resultsTable__rowItem resultsTable__rowItem--headItem">Lp</th>
@@ -48,9 +49,8 @@ const ResultsTable = ({ playersStats }) => {
                 <tbody>
                     {results}
                 </tbody>
-            </table>
-
-        </div>
+            </Table>
+        </TableContainer>
     );
 };
 export default ResultsTable;
