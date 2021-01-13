@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Settings from "./Settings";
 import Matches from "./Matches";
+import { GlobalStyle } from "./GlobalStyle";
 
 const useStateItem = (keyName, initialValue) => {
   const getInitialState = () => {
@@ -22,23 +23,24 @@ const useStateItem = (keyName, initialValue) => {
 function App() {
   const [players, setPlayers] = useStateItem("players", "");
   const [matches, setMatches] = useStateItem("matches", "");
-  const [isGameStarted, setIsGameStarted] = useStateItem("isGameStarted", false);
+  const [isGameStarted, setIsGameStarted] = useStateItem(
+    "isGameStarted",
+    false
+  );
   const [playersStats, setPlayersStats] = useStateItem("playersStats", []);
   const [gameMode, setGameMode] = useStateItem("gameMode", "single");
   // const [isEditEnabled, setIsEditEnabled] = useStateItem("isEditEnabled", false);
 
   const removePlayer = (name) => {
-    setPlayers(players => players.filter(player => player.name !== name));
+    setPlayers((players) => players.filter((player) => player.name !== name));
   };
 
   const addNewPlayer = (name) => {
-    if (players && players.find(player => player.name === name)) {
+    if (players && players.find((player) => player.name === name)) {
       return;
     }
 
-    setPlayers(players => [
-      ...players, { name }
-    ])
+    setPlayers((players) => [...players, { name }]);
   };
 
   // const copyMatches = (matchesTemplate) => {
@@ -95,7 +97,7 @@ function App() {
     }
 
     //last single or double queue, depends on even or odd players number
-    if ((gameSize % 2) === 0) {
+    if (gameSize % 2 === 0) {
       for (let i = 0; i < gameSize / 2; i++) {
         matchesTemplate.push({
           id: matchesTemplate.length,
@@ -112,7 +114,9 @@ function App() {
 
     if (mode === "volta") {
       gameSize = matchesTemplate.length;
-      const playersDoubleTemplate = matchesTemplate.map(({ player1, player2 }) => [player1, player2]);
+      const playersDoubleTemplate = matchesTemplate.map(
+        ({ player1, player2 }) => [player1, player2]
+      );
       matchesTemplate = [];
       for (let i = 0; i < 2; i++) {
         for (let a = i; a < gameSize; a = a + 2) {
@@ -144,7 +148,7 @@ function App() {
       }
 
       //last single or double queue, depends on even or odd players number
-      if ((gameSize % 2) === 0) {
+      if (gameSize % 2 === 0) {
         for (let i = 0; i < gameSize / 2; i++) {
           matchesTemplate.push({
             id: matchesTemplate.length,
@@ -158,23 +162,32 @@ function App() {
         }
       }
 
-      matchesTemplate = matchesTemplate.filter(match => !(match.player1 === match.player2
-        || match.player1 === match.player4
-        || match.player3 === match.player2
-        || match.player3 === match.player4
-      ));
+      matchesTemplate = matchesTemplate.filter(
+        (match) =>
+          !(
+            match.player1 === match.player2 ||
+            match.player1 === match.player4 ||
+            match.player3 === match.player2 ||
+            match.player3 === match.player4
+          )
+      );
 
       let counter = 0;
-      matchesTemplate = matchesTemplate.map(match => ({ ...match, id: counter++ }));
+      matchesTemplate = matchesTemplate.map((match) => ({
+        ...match,
+        id: counter++,
+      }));
     }
     setMatches(matchesTemplate);
   };
 
-  if (!isGameStarted
+  if (
+    !isGameStarted
     // || isEditEnabled
   ) {
     return (
       <div>
+        <GlobalStyle />
         <Settings
           players={players}
           addNewPlayer={addNewPlayer}
@@ -185,11 +198,11 @@ function App() {
           setGameMode={setGameMode}
         />
       </div>
-    )
-  }
-  else {
+    );
+  } else {
     return (
       <div>
+        <GlobalStyle />
         <Matches
           matches={matches}
           setMatches={setMatches}
@@ -201,7 +214,7 @@ function App() {
           gameMode={gameMode}
         />
       </div>
-    )
+    );
   }
 }
 
