@@ -10,7 +10,6 @@ const Matches = ({ matches,
     playersStats,
     setPlayersStats,
     setIsGameStarted,
-    // setIsEditEnabled,
     gameMode,
 }) => {
     const [selectedMatch, setSelectedMatch] = useState(0);
@@ -130,10 +129,6 @@ const Matches = ({ matches,
         ).reverse());
     }
 
-    // const onEditButtonClick = () => {
-    //     setIsEditEnabled(true);
-    // }
-
     const onResetButtonClick = () => {
         setIsGameStarted(false);
     }
@@ -141,11 +136,6 @@ const Matches = ({ matches,
     return (
         <>
             <ButtonsContainer>
-                <Button disabled
-                    // onClick={onEditButtonClick}
-                >
-                    Edytuj graczy bez resetu
-                </Button>
                 <Button
                     onClick={onResetButtonClick}
                 >

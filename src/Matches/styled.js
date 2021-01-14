@@ -19,6 +19,7 @@ export const Container = styled.div`
 `
 
 export const ButtonsContainer = styled(Container)`
+    grid-template-columns: unset;
     max-width: 500px;
     padding: 5px;
 `

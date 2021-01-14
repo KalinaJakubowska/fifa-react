@@ -29,7 +29,6 @@ function App() {
   );
   const [playersStats, setPlayersStats] = useStateItem("playersStats", []);
   const [gameMode, setGameMode] = useStateItem("gameMode", "single");
-  // const [isEditEnabled, setIsEditEnabled] = useStateItem("isEditEnabled", false);
 
   const removePlayer = (name) => {
     setPlayers((players) => players.filter((player) => player.name !== name));
@@ -42,20 +41,6 @@ function App() {
 
     setPlayers((players) => [...players, { name }]);
   };
-
-  // const copyMatches = (matchesTemplate) => {
-  //   for (let matchT of matchesTemplate) {
-  //     for (let match of matches) {
-  //       const { goal1, goal2, player1, player2 } = match;
-  //       if ((matchT.player1 === player1 && matchT.player2 === player2) ||
-  //         (matchT.player1 === player2 && matchT.player2 === player1)) {
-  //         matchT.goal1 = goal1;
-  //         matchT.goal2 = goal2;
-  //       }
-  //     }
-  //   };
-  //   setIsEditEnabled(false);
-  // }
 
   function shuffle(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -108,9 +93,6 @@ function App() {
         });
       }
     }
-    // if (isEditEnabled) {
-    //   copyMatches(matchesTemplate);
-    // }
 
     if (mode === "volta") {
       gameSize = matchesTemplate.length;
@@ -132,7 +114,6 @@ function App() {
         }
       }
 
-      //all double middle queues
       for (let i = 1; i < Math.floor((gameSize - 1) / 2); i++) {
         for (let y = 0; y < gameSize; y++) {
           matchesTemplate.push({
@@ -147,7 +128,6 @@ function App() {
         }
       }
 
-      //last single or double queue, depends on even or odd players number
       if (gameSize % 2 === 0) {
         for (let i = 0; i < gameSize / 2; i++) {
           matchesTemplate.push({
@@ -183,7 +163,6 @@ function App() {
 
   if (
     !isGameStarted
-    // || isEditEnabled
   ) {
     return (
       <div>
@@ -210,7 +189,6 @@ function App() {
           playersStats={playersStats}
           setPlayersStats={setPlayersStats}
           setIsGameStarted={setIsGameStarted}
-          //setIsEditEnabled={setIsEditEnabled}
           gameMode={gameMode}
         />
       </div>
