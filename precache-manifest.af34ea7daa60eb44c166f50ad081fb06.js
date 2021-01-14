@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "49ad86aac4930afe5d14e8b455b4f22a",
+    "revision": "522b744ee8e9ce164e7240eca9aa5692",
     "url": "/fifa-react/index.html"
   },
   {
-    "revision": "8a9f44fb0f48140ef0c7",
-    "url": "/fifa-react/static/css/main.2f65199b.chunk.css"
+    "revision": "d6988c370dbbb687defc",
+    "url": "/fifa-react/static/css/main.fa807e68.chunk.css"
   },
   {
-    "revision": "0828e7afb701c361aa35",
-    "url": "/fifa-react/static/js/2.3051e7b2.chunk.js"
+    "revision": "0d596d6ee339b67b7b44",
+    "url": "/fifa-react/static/js/2.6132fb20.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/fifa-react/static/js/2.3051e7b2.chunk.js.LICENSE.txt"
+    "url": "/fifa-react/static/js/2.6132fb20.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8a9f44fb0f48140ef0c7",
-    "url": "/fifa-react/static/js/main.60d9c9f3.chunk.js"
+    "revision": "d6988c370dbbb687defc",
+    "url": "/fifa-react/static/js/main.19df1394.chunk.js"
   },
   {
     "revision": "8965312fc81f7aad811f",
