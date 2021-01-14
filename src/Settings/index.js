@@ -43,13 +43,13 @@ const Settings = ({
         onClick={onStartButtonClickSingle}
         disabled={players.length < 3}
       >
-        Rozpocznij turniej single!
+        Rozpocznij turniej single! (Min. 3 graczy)
       </CenteredButton>
       <CenteredButton
         onClick={onStartButtonClickVolta}
         disabled={players.length < 4}
       >
-        Rozpocznij turniej Volta!
+        Rozpocznij turniej Volta! (Min. 4 graczy)
       </CenteredButton>
     </SettingsContainer>
   );
