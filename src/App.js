@@ -161,27 +161,10 @@ function App() {
     setMatches(matchesTemplate);
   };
 
-  if (
-    !isGameStarted
-  ) {
-    return (
-      <div>
-        <GlobalStyle />
-        <Settings
-          players={players}
-          addNewPlayer={addNewPlayer}
-          removePlayer={removePlayer}
-          isGameStarted={isGameStarted}
-          setIsGameStarted={setIsGameStarted}
-          generateMatches={generateMatches}
-          setGameMode={setGameMode}
-        />
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <GlobalStyle />
+  return (
+    <>
+      <GlobalStyle />
+      {isGameStarted ? (
         <Matches
           matches={matches}
           setMatches={setMatches}
@@ -191,9 +174,19 @@ function App() {
           setIsGameStarted={setIsGameStarted}
           gameMode={gameMode}
         />
-      </div>
-    );
-  }
+      ) : (
+        <Settings
+          players={players}
+          addNewPlayer={addNewPlayer}
+          removePlayer={removePlayer}
+          isGameStarted={isGameStarted}
+          setIsGameStarted={setIsGameStarted}
+          generateMatches={generateMatches}
+          setGameMode={setGameMode}
+        />
+      )}
+    </>
+  );
 }
 
 export default App;
