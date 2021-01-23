@@ -2,7 +2,11 @@ import React from "react";
 import SettingsForm from "./SettingsForm";
 import SettingsPlayers from "./SettingsPlayers";
 import { CenteredButton } from "./../styledButtons.js";
-import { HeaderContainer, SettingsContainer, SettingsHeader } from "./styled.js";
+import {
+  HeaderContainer,
+  SettingsContainer,
+  SettingsHeader,
+} from "./styled.js";
 
 const Settings = ({
   players,
@@ -10,34 +14,28 @@ const Settings = ({
   removePlayer,
   generateMatches,
   setIsGameStarted,
-  setGameMode
+  setGameMode,
 }) => {
-
   const onStartButtonClickSingle = () => {
     generateMatches("single");
     setIsGameStarted(true);
     setGameMode("single");
-  }
+  };
 
   const onStartButtonClickVolta = () => {
     generateMatches("volta");
     setIsGameStarted(true);
-    setGameMode("volta")
-  }
+    setGameMode("volta");
+  };
 
   return (
     <SettingsContainer>
       <HeaderContainer>
         <SettingsHeader>Lista graczy:</SettingsHeader>
       </HeaderContainer>
-      <SettingsForm
-        addNewPlayer={addNewPlayer}
-      />
+      <SettingsForm addNewPlayer={addNewPlayer} />
 
-      <SettingsPlayers
-        players={players}
-        removePlayer={removePlayer}
-      />
+      <SettingsPlayers players={players} removePlayer={removePlayer} />
 
       <CenteredButton
         onClick={onStartButtonClickSingle}
@@ -53,6 +51,6 @@ const Settings = ({
       </CenteredButton>
     </SettingsContainer>
   );
-}
+};
 
 export default Settings;
